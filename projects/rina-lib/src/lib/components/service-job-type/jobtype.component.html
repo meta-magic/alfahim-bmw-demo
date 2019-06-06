@@ -1,0 +1,33 @@
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      SELECT SERVICE TYPE
+    </amexio-label>
+  </amexio-header-ce>
+  <rina-step-box [active-index]="5"></rina-step-box>
+  <amexio-body-ce [align]="'start'">
+    <amexio-row>
+      <amexio-column [size]="6">
+        <amexio-listbox [enable-checkbox]="true" [height]="300" [header]="'Service Type'" [data]="serviceTypeData" [display-field]="'typeName'" (selectedRows)="getSelectedType($event)">
+        </amexio-listbox>
+        <amexio-textarea-input field-label="Remark" [(ngModel)]="remarks" name="remarks" place-holder="Enter remark">
+        </amexio-textarea-input>
+      </amexio-column>
+    </amexio-row>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" [type]="'theme-backgroundcolor'" [tooltip]="'Back'" [size]="'large'" (onClick)="onBackHandle($event)">
+        </amexio-button>
+        <amexio-button [label]="'Next'" [type]="'theme-color'" [tooltip]="'skip'" [size]="'large'" (onClick)="onNextHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>

@@ -1,0 +1,69 @@
+<amexio-spinner [show]="showLoader" [type]="'rectanglebounce'" [vertical-position]="'center'" [horizontal-position]="'center'" [color]="'yellow'">
+</amexio-spinner>
+
+
+
+<amexio-card-ce class="serviceconf">
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      PLEASE CONFIRM DETAILS
+    </amexio-label>
+  </amexio-header-ce>
+  <rina-step-box [active-index]="7"></rina-step-box>
+  <amexio-body-ce [align]="'start'">
+    <amexio-layout-columns [orientation]="'horizontal'" [border]="false" [alignment]="'end'">
+            <table>
+              <tr style="vertical-align: top;text-align: left" *ngFor="let data of serviceConfirmData">
+                <td>
+                  <b>{{data.fieldName}}</b>
+                </td>
+                <td style="word-break: break-all;max-width: 250px">
+                  {{data.fieldValue}}
+                </td>
+              </tr>
+
+              <tr style="vertical-align: top;text-align: left">
+                <td>
+                  <b>Service Type</b>
+                </td>
+                <td style="word-break: break-all;max-width: 250px">
+                  <ng-container *ngIf="extraServiceData && extraServiceData.selectedJobType">
+                    <ng-container *ngFor="let type of extraServiceData.selectedJobType; let index=index">
+                      {{index+1}}. {{type.typeName}}<br>
+                    </ng-container>
+                  </ng-container>
+                </td>
+              </tr>
+
+              <tr style="vertical-align: top;text-align: left" *ngIf="extraServiceData">
+                <td>
+                  <b>Remarks</b>
+                </td>
+                <td style="word-break: break-all;max-width: 250px">
+                    {{extraServiceData.remarks}}
+                </td>
+              </tr>
+            </table>
+      <amexio-layout-item [fit]="true">
+        <amexio-google-map [initial-zoom-level]="8" [initial-lat]="24.4086" [initial-lng]="55.2701" [height]="'100%'" [data]="serviceStations" [google-map-key]="'AIzaSyDKSPX97z-ndeh_Mgq3xkaML2Kp9AwHA9s'">
+        </amexio-google-map>
+      </amexio-layout-item>
+    </amexio-layout-columns>
+
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" (onClick)="onBackClick()" [type]="'theme-backgroundcolor'" [tooltip]="'Proceed to preferred location'" [size]="'large'">
+        </amexio-button>
+        <amexio-button [label]="'Confirm'" [type]="'theme-color'" [tooltip]="'Confirm'" [size]="'large'" (onClick)="confirmAppointment($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+

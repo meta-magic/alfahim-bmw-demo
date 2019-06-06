@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data": [
+    {
+      "vehicleImgUrl": "assets/images/mar4matic.png",
+      "modelName": "E 450 4MATIC",
+      "engine": "3.0L – V6",
+      "horsepower": "367 hp @ 5.500-6.000 rpm",
+      "torque": "500 N.m @ 1.800-4.500 rpm",
+      "acceleration": "0-100 km/h in 5.6 s",
+      "topSpeed": "250 km/h",
+      "modelYear": "2018",
+      "registrationNo": "F 651982",
+      "dateOfPurchase": "February 24, 2018",
+      "purchasedFrom": "Emirates Motor Company ,Marina, Marina Mall,Abu Dhabi"
+    },
+    {
+      "vehicleImgUrl": "assets/images/mar4matic.png",
+      "modelName": "E 450 4MATIC",
+      "engine": "3.0L – V6",
+      "horsepower": "367 hp @ 5.500-6.000 rpm",
+      "torque": "500 N.m @ 1.800-4.500 rpm",
+      "acceleration": "0-100 km/h in 5.6 s",
+      "topSpeed": "250 km/h",
+      "modelYear": "2018",
+      "registrationNo": "F 651982",
+      "dateOfPurchase": "February 24, 2018",
+      "purchasedFrom": "Emirates Motor Company ,Marina, Marina Mall,Abu Dhabi"
+    }
+  ]
+
+}

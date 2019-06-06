@@ -1,0 +1,91 @@
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      PERSONAL DETAILS
+    </amexio-label>
+  </amexio-header-ce>
+  <rina-step-box [active-index]="3"></rina-step-box>
+  <amexio-body-ce [align]="'start'">
+      <div [formGroup]="personDetailsGroup">
+        <amexio-row>
+          <amexio-column [size]=2>
+            <amexio-dropdown [(ngModel)]="personalDetails.title" formControlName="Title" [enable-sort]="true" [sort]="'asc'" [search]="true" name="title" [place-holder]="'Select title'" [field-label]="'Title'" [data]="titles" [value-field]="'primaryKey'" [display-field]="'primaryDisplay'">
+            </amexio-dropdown>
+          </amexio-column>
+          <amexio-column [size]=5>
+            <amexio-text-input [(ngModel)]="personalDetails.firstName" formControlName="FirstName" name="name" field-label="Name" place-holder="Name">
+            </amexio-text-input>
+          </amexio-column>
+          <amexio-column [size]=5>
+            <amexio-text-input [(ngModel)]="personalDetails.surname" formControlName="Surname" name="surname" field-label="Surname" place-holder="Surname">
+            </amexio-text-input>
+          </amexio-column>
+        </amexio-row>
+
+        <amexio-row>
+          <amexio-column [size]=4>
+            <amexio-email-input [(ngModel)]="personalDetails.email" formControlName="Email" name="email" [field-label]="'Email'" [place-holder]="'Email'">
+            </amexio-email-input>
+          </amexio-column>
+          <amexio-column [size]=4>
+            <amexio-text-input [(ngModel)]="personalDetails.phone" formControlName="Phone" name="phone" [min-length]="10" field-label="Phone" place-holder="phone">
+            </amexio-text-input>
+          </amexio-column>
+          <amexio-column [size]=4>
+            <amexio-radio-group [(ngModel)]="personalDetails.perferredContact" [field-label]="'Preferred mode of contact'" formControlName="ContactPreference" name="contactPreference" [display-field]="'primaryDisplay'" [value-field]="'primaryKey'" [horizontal]="true"
+                                [data]="preferredModeOfContacts">
+            </amexio-radio-group>
+          </amexio-column>
+
+        </amexio-row>
+        <br>
+        <amexio-row>
+          <amexio-column [size]=6>
+            <amexio-dropdown [(ngModel)]="personalDetails.vehicleType" formControlName="VehicleType" [enable-sort]="true" [sort]="'asc'" [search]="true" name="vehicleType" [place-holder]="'Vehicle Type'" [field-label]="'Vehicle Type'" [data]="vehicleTypes" [value-field]="'primaryDisplay'"
+                             [display-field]="'primaryDisplay'">
+            </amexio-dropdown>
+          </amexio-column>
+          <amexio-column [size]=6>
+            <amexio-dropdown [(ngModel)]="personalDetails.modelYear" formControlName="ModelYear" [enable-sort]="true" [sort]="'asc'" [search]="true" name="modelYear" [place-holder]="'Model Year'" [field-label]="'Model Year'" [data]="modelYears" [value-field]="'primaryKey'"
+                             [display-field]="'primaryDisplay'">
+            </amexio-dropdown>
+          </amexio-column>
+        </amexio-row>
+
+        <amexio-row>
+          <amexio-column [size]=6>
+            <amexio-number-input [(ngModel)]="personalDetails.presentKm" formControlName="PresentKm" name="presentKm" [min-value]="1" [field-label]="'Present KM on your car'" [place-holder]="'Enter KM on you car'">
+            </amexio-number-input>
+          </amexio-column>
+          <amexio-column [size]=6>
+            <amexio-text-input [(ngModel)]="personalDetails.registrationNumber" formControlName="RegistrationNumber" name="registrationNumber" field-label="Registration Plate (License Plate)" place-holder="Registration plate">
+            </amexio-text-input>
+          </amexio-column>
+        </amexio-row>
+      </div>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCloseClick($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" [type]="'theme-backgroundcolor'" [tooltip]="'Proceed to preferred location'" [size]="'large'" (onClick)="onPreviousClick($event)">
+        </amexio-button>
+        <amexio-button [label]="'Next'" [type]="'theme-color'" [disabled]="!personDetailsGroup.valid" [tooltip]="'Proceed to preferred location'" [size]="'large'" (onClick)="proceedToPreferredLocation($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+
+<amexio-spinner [show]="showLoader" [type]="'rectanglebounce'" [vertical-position]="'center'" [horizontal-position]="'center'" [color]="'yellow'">
+</amexio-spinner>
+<amexio-dialogue [(show)]="errorDialogue" [material-design]="true" [message]="errorMsg" [title]="'Error'" [message-type]="'error'" [type]="'alert'">
+</amexio-dialogue>
+
+<amexio-notification [data]="successMsg" [vertical-position]="'top'" [horizontal-position]="'right'" [close-on-escape]="true" [background-color]="'green'" [auto-dismiss-msg]="false" [icon]="'fa fa-check-square-o fa-fw'" [auto-dismiss-msg-interval]="4000">
+</amexio-notification>
+

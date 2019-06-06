@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data":[
+    {
+      "interactionDate":"12/01/2018",
+      "name":"Dattaram"
+    },
+    {
+      "interactionDate":"11/01/2018",
+      "name":"Ketan"
+    },
+    {
+      "interactionDate":"15/01/2018",
+      "name":"Sagar"
+    }
+
+  ]
+}

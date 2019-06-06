@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "response":{
+    "customerDetails": {
+      "customerId": 247545,
+      "mobile": 9776018823,
+      "name": "Jone Doe",
+      "companyName": " JD Associates",
+      "operatingStatus": "Active",
+      "email": "abc@gmail.com",
+      "altNumber": 9583199534,
+      "birthday": "June 28",
+      "anniversary": "September 26",
+      "profileImageUrl": "assets/images/profile1.png",
+      "callAttempt": 3,
+      "bu": "Emirates Motor Company",
+      "vehical": "E 450 4MATIC",
+      "dateOfPurchase": "February 24, 2018",
+      "modelYear": "2018",
+      "registrationNo": "F 651982",
+      "customerClass": "Premium",
+      "preferredModeOfContact": "Phone",
+      "lastService": "Oct 12,2018",
+      "nextService": "March 12,2",
+      "openSRs": "",
+      "vehicleDetails": [
+        {
+          "vehicleImgUrl": "assets/images/mar4matic.png",
+          "modelName": "E 450 4MATIC",
+          "engine": "3.0L – V6",
+          "horsepower": "367 hp @ 5.500-6.000 rpm",
+          "torque": "500 N.m @ 1.800-4.500 rpm",
+          "acceleration": "0-100 km/h in 5.6 s",
+          "topSpeed": "250 km/h",
+          "modelYear": "2018",
+          "registrationNo": "F 651982",
+          "dateOfPurchase": "February 24, 2018",
+          "purchasedFrom": "Emirates Motor Company ,Marina, Marina Mall,Abu Dhabi"
+        },
+        {
+          "vehicleImgUrl": "assets/images/mar4matic.png",
+          "modelName": "E 450 4MATIC",
+          "engine": "3.0L – V6",
+          "horsepower": "367 hp @ 5.500-6.000 rpm",
+          "torque": "500 N.m @ 1.800-4.500 rpm",
+          "acceleration": "0-100 km/h in 5.6 s",
+          "topSpeed": "250 km/h",
+          "modelYear": "2018",
+          "registrationNo": "F 651982",
+          "dateOfPurchase": "February 24, 2018",
+          "purchasedFrom": "Emirates Motor Company ,Marina, Marina Mall,Abu Dhabi"
+        }
+      ]
+    }
+  }
+}

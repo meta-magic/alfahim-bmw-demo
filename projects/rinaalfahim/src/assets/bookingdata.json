@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data":[
+    {
+      "bookingId":"456852",
+      "bookingDate":"12/01/2018",
+      "name":"Dattaram"
+    },
+    {
+      "bookingId":"865745",
+      "bookingDate":"11/01/2018",
+      "name":"Ketan"
+    },
+    {
+      "bookingId":"875421",
+      "bookingDate":"15/01/2018",
+      "name":"Sagar"
+    }
+
+  ]
+}

@@ -1,0 +1,15 @@
+
+<!--
+<amexio-steps [icon]="true" >
+  <amexio-step-block *ngFor="let item of stepBoxData" [active]="(item.index === activeIndex)" [icon]="item.icon">
+  </amexio-step-block>
+</amexio-steps>
+-->
+
+
+<br/>
+<div class="alfahimstepbox">
+  <div class="alfahimstepboxitems" [ngClass]="{'alfahimstepboxitems-active': (item.index === activeIndex), 'alfahimstepboxitems-deactive': (item.index != activeIndex)}" [ngClass]="{'alfahimstepboxitems-active': true}" *ngFor="let item of stepBoxData">
+    <div  [attr.class]="item.icon" ></div>
+  </div>
+</div>

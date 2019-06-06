@@ -1,0 +1,20 @@
+{
+    "success": true,
+    "message": "data retrived successfully",
+    "data": [
+      {
+        "assistanceId": 123,
+        "firstName": "Ketan",
+        "lastName": "Gote",
+        "primaryKey" : 123,
+        "primaryDisplay" : "SA - Ketan Gote"
+      },
+      {
+        "assistanceId": 123,
+        "firstName": "Rekha",
+        "lastName": "Gote",
+        "primarykey" : 123,
+        "primaryDisplay" : "SA - Rekha Gote"
+      }
+    ]
+  }

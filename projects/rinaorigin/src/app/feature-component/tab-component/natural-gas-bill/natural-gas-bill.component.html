@@ -1,0 +1,122 @@
+<ng-container *ngIf="billSummary">
+  <b>Period: {{billSummary.period}}</b><br>
+  <span>Your rate: {{billSummary.rate}}</span>
+  <amexio-datagrid
+    [data]="billSummary.meterDetails">
+    <amexio-data-table-column
+      [data-index]="'meterNo'"
+      [data-type]="'string'"
+      [width]="13"
+      [text]="'Meter no'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'previousRead'"
+      [data-type]="'string'"
+      [width]="20"
+      [text]="'Previous Read'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'currentRead'"
+      [data-type]="'string'"
+      [width]="15"
+      [text]="'Current Read'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'volumeX'"
+      [data-type]="'string'"
+      [width]="13"
+      [text]="'Volumn X'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'correctionFactorX'"
+      [data-type]="'string'"
+      [width]="20"
+      [text]="'Correction factor X'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'heatingValue'"
+      [data-type]="'string'"
+      [width]="17"
+      [text]="'Heating Value'">
+      <ng-template #amexioBodyTmpl let-column let-row="row">
+        <ng-container *ngIf="row.bold">
+          <b>{{row.heatingValue}}</b>
+        </ng-container>
+        <ng-container *ngIf="!row.bold">
+          <span>{{row.heatingValue}}</span>
+        </ng-container>
+      </ng-template>
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'usageMJ'"
+      [data-type]="'string'"
+      [width]="15"
+      [text]="'Usage (MJ)'">
+      <ng-template #amexioBodyTmpl let-column let-row="row">
+        <ng-container *ngIf="row.bold">
+          <b>{{row.usageMJ}}</b>
+        </ng-container>
+        <ng-container *ngIf="!row.bold">
+          <span>{{row.usageMJ}}</span>
+        </ng-container>
+      </ng-template>
+    </amexio-data-table-column>
+  </amexio-datagrid>
+
+
+  <amexio-row>
+    <amexio-column [size]="10">
+      <amexio-datagrid
+        [data]="billSummary.billDetails">
+        <amexio-data-table-column
+          [data-index]="'title'"
+          [data-type]="'string'"
+          [width]="18"
+          [text]="'Charges'">
+          <ng-template #amexioBodyTmpl let-column let-row="row">
+            <ng-container *ngIf="row.bold">
+              <b>{{row.title}}</b>
+            </ng-container>
+            <ng-container *ngIf="!row.bold">
+              <span>{{row.title}}</span>
+            </ng-container>
+          </ng-template>
+        </amexio-data-table-column>
+        <amexio-data-table-column
+          [data-index]="'billDays'"
+          [data-type]="'string'"
+          [width]="13"
+          [text]="'Bill Days'">
+        </amexio-data-table-column>
+        <amexio-data-table-column
+          [data-index]="'usage'"
+          [data-type]="'string'"
+          [width]="17"
+          [text]="'Usage (MJ)'">
+        </amexio-data-table-column>
+        <amexio-data-table-column
+          [data-index]="'charge'"
+          [data-type]="'string'"
+          [width]="15"
+          [text]="'Charge'">
+        </amexio-data-table-column>
+        <amexio-data-table-column
+          [data-index]="'amount'"
+          [data-type]="'string'"
+          [width]="10"
+          [text]="'Amount'">
+          <ng-template #amexioBodyTmpl let-column let-row="row">
+            <ng-container *ngIf="row.bold">
+              <b>{{row.amount}}</b>
+            </ng-container>
+            <ng-container *ngIf="!row.bold">
+              <span>{{row.amount}}</span>
+            </ng-container>
+          </ng-template>
+        </amexio-data-table-column>
+
+      </amexio-datagrid>
+    </amexio-column>
+  </amexio-row>
+</ng-container>
+

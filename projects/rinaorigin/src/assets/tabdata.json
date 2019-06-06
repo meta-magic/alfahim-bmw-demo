@@ -1,0 +1,68 @@
+[
+  {
+    "value": "electricity",
+    "title": "ELECTRICITY: ACCOUNT SUMMARY",
+    "selected": false,
+    "disabled": true,
+    "data": [
+      {
+        "title": "CURRENT PLAN",
+        "key": "CP",
+        "active": true
+      },
+      {
+        "title": "ELECTRICITY BILL",
+        "key": "EB",
+        "active": false
+      },
+      {
+        "title": "INTERACTION HISTORY",
+        "key": "IH",
+        "active": false
+      },
+      {
+        "title": "USAGE REPORT",
+        "key": "UR",
+        "active": false
+      },
+       {
+        "title": "RIGHT SELL",
+        "key": "RS",
+        "active": false
+      }
+    ]
+  },
+  {
+    "value": "naturalgas",
+    "title": "NATURAL GAS: ACCOUNT SUMMARY",
+    "selected": false,
+    "disabled": true,
+    "data": [
+      {
+        "title": "CURRENT PLAN",
+        "key": "CP",
+        "active": true
+      },
+      {
+        "title": "NATURAL GAS BILL",
+        "key": "NGB",
+        "active": false
+      },
+      {
+        "title": "INTERACTION HISTORY",
+        "key": "IH",
+        "active": false
+      },
+      {
+        "title": "USAGE REPORT",
+        "key": "UR",
+        "active": false
+      },
+      {
+        "title": "RIGHT SELL",
+        "key": "RS",
+        "active": false
+      }
+    ]
+  }
+]

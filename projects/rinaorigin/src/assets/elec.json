@@ -1,0 +1,125 @@
+{
+  "period": "16 Aug 18 - 14 Nov 18 (91 days)",
+  "rate": "Domestic Seasonal ToU Transitional",
+  "billDetails": [
+    {
+      "title": "16 Aug 18 - 26 Sep 18 (42 days) Charges",
+      "usage": "",
+      "charge": "",
+      "amount": " ",
+      "bold": true
+    },
+    {
+      "title": "Peak Winter Usage",
+      "usage": "41.907",
+      "charge": "28.52 c/kWh",
+      "amount": "$11.95 ",
+      "bold": false
+    },
+    {
+      "title": "Off-Peak Usage",
+      "usage": "112.565",
+      "charge": "28.52 c/kWh",
+      "amount": "$32.10 ",
+      "bold": false
+    },
+    {
+      "title": "Shoulder Usage",
+      "usage": "166.143",
+      "charge": "28.52 c/kWh",
+      "amount": "$47.38",
+      "bold": false
+    },
+    {
+      "title": "Supply Charge",
+      "usage": "",
+      "charge": "83.39 c/Day",
+      "amount": "$35.02 ",
+      "bold": false
+    },
+    {
+      "title": "27 Sep 18 - 14 Nov 18 (49 days): concession change Charges",
+      "usage": "",
+      "charge": "",
+      "amount": "",
+      "bold": true
+    },
+    {
+      "title": "Peak Winter Usage",
+      "usage": "15.907",
+      "charge": "28.52 c/kWh",
+      "amount": "$4.54",
+      "bold": false
+    },
+    {
+      "title": "Off-Peak Usage",
+      "usage": "146.112",
+      "charge": "28.52 c/kWh",
+      "amount": "$41.67 ",
+      "bold": false
+    },
+    {
+      "title": "Shoulder Usage",
+      "usage": "214.25",
+      "charge": "28.52 c/kWh",
+      "amount": "$61.10",
+      "bold": false
+    },
+    {
+      "title": "Supply Charge",
+      "usage": "",
+      "charge": "83.39 c/Day",
+      "amount": "$40.86",
+      "bold": false
+    },
+    {
+      "title": "Discounts and Rebates",
+      "usage": "",
+      "charge": "",
+      "amount": "",
+      "bold": false
+    },
+    {
+      "title": "NSW Govt Life Support Rebate X 1 (49 days)",
+      "usage": "",
+      "charge": "",
+      "amount": "$17.64 CR",
+      "bold": false
+    },
+    {
+      "title": "Total for period 16 Aug 18 - 14 Nov 18 (excl GST)",
+      "usage": "",
+      "charge": "",
+      "amount": "$256.98 ",
+      "bold": false
+    },
+    {
+      "title": "Total electricity charges",
+      "usage": "",
+      "charge": "",
+      "amount": " ",
+      "bold": true
+    },
+    {
+      "title": "Charges less discounts and rebates",
+      "usage": "",
+      "charge": "",
+      "amount": "$256.98",
+      "bold": false
+    },
+    {
+      "title": "GST",
+      "usage": "",
+      "charge": "",
+      "amount": "$25.70",
+      "bold": false
+    },
+    {
+      "title": "Your total electricity charges (incl GST)",
+      "usage": "",
+      "charge": "",
+      "amount": "$282.68",
+      "bold": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{ "response" :
+  {
+    "customerId": "169281",
+    "customerNo":"169281",
+    "name": "Saif Rahed ",
+    "firstName":"Saif Rahed",
+    "lastName":"Hamad",
+    "mobile": "971567609991",
+    "companyName": "",
+    "operatingStatus": "",
+    "email": "N/A",
+    "birthday": "N/A",
+    "altNumber": "N/A",
+    "anniversary": "N/A",
+    "profileImageUrl": "assets/images/dats.jpg",
+    "customerClass": "",
+    "preferredModeOfContact": "Mobile",
+    "vehicles": [
+      {
+        "vehicleId":"48dde38c-0ed5-4223-9291-1a3ebce96610",
+        "registrationNo": "31104-14-AUH",
+        "dateOfPurchase": "29/07/2012",
+        "bu":"EMC",
+        "lastService": "25/09/2016",
+        "nextService": "18/01/2017",
+        "openSRs": "",
+        "vehicleDetail":   {
+          "vehicleId": "5d417cc7-7f2e-43a5-bf61-598bc296a3cd",
+          "modelName": "A-Class",
+          "image":"assets/images/mar4matic.png",
+          "modelYear":"d8f6f56d-5ddb-433e-9dcf-8cc701411069",
+          "engine":"3.0L – V6",
+          "horsepower":"367 hp @ 5.500-6.000 rpm",
+          "torque":"500 N.m @ 1.800-4.500 rpm",
+          "acceleration":"0-100 km/h in 5.6 s",
+          "topSpeed":"250 km/h",
+          "vehicleClass":"A-Class"
+
+        }
+      },
+      {
+        "vehicleId":"48dde38c-0ed5-4223-9291-1a3ebce96610",
+        "registrationNo": "31104-14-AUH",
+        "dateOfPurchase": "29/07/2012",
+        "bu":"EMC",
+        "lastService": "25/09/2016",
+        "nextService": "18/01/2017",
+        "openSRs": "",
+        "vehicleDetail":   {
+          "vehicleId": "5d417cc7-7f2e-43a5-bf61-598bc296a3cd",
+          "modelName": "A-Class",
+          "image":"assets/images/mar4matic.png",
+          "modelYear":"d8f6f56d-5ddb-433e-9dcf-8cc701411069",
+          "engine":"3.0L – V6",
+          "horsepower":"367 hp @ 5.500-6.000 rpm",
+          "torque":"500 N.m @ 1.800-4.500 rpm",
+          "acceleration":"0-100 km/h in 5.6 s",
+          "topSpeed":"250 km/h",
+          "vehicleClass":"A-Class"
+
+        }
+      }
+    ]
+  }
+  }

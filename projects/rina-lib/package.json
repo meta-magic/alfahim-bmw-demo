@@ -1,0 +1,11 @@
+{
+  "name": "rina-lib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0"
+  },
+  "dependencies": {
+    "amexio-ng-extensions": "file:../../../../../workspace_ui_amexio/amexio.github.io/amexio-ng-extensions-5.5.0.tgz"
+  }
+}

@@ -1,0 +1,49 @@
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      QUICK BOOKING
+    </amexio-label>
+  </amexio-header-ce>
+  <amexio-body-ce [align]="'start'">
+    <amexio-row>
+      <amexio-column [size]="12">
+        <amexio-label [size]="'small-bold'"> Please select vehicle you would like to get serviced: </amexio-label>
+      </amexio-column><br/>
+    </amexio-row>
+    <amexio-row>
+      <amexio-column [fit]="true" [size]="4" *ngFor="let vehicle of contentCardData">
+        <content-card [title]="vehicle.title" [image-url]="vehicle.imageUrl" [property-data]="vehicle.propertyData">
+          <div *ngIf="vehicle.vehicleMetadata.bu === 'CME'">
+            <amexio-label [font-color]="'red'">Sorry, we are not accepting Service Bookings for CME Business Unit.</amexio-label>
+          </div>
+          <div *ngIf="vehicle.vehicleMetadata.bu != 'CME'" class="inputgroup from-group">
+            <label for="{{vehicle.vehicleId}}" [attr.aria-checked]="vehicle.selected" [attr.aria-disabled]="(vehicle.vehicleMetadata.bu === 'CME')" class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="selectVehicle(vehicle)">
+              Select Vehicle
+              <input  style="top:0; left:0" id="{{vehicle.vehicleId}}" type="radio"
+                      name="selectvehicle" [value]="vehicle.selected"
+                      [checked]="vehicle.selected">
+
+              <span class="input-box-radiobox-label"></span>
+            </label>
+          </div>
+        </content-card>
+      </amexio-column>
+    </amexio-row>
+
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" [type]="'theme-backgroundcolor'" [tooltip]="'Back'" [size]="'large'" (onClick)="onBackHandle($event)">
+        </amexio-button>
+        <amexio-button [label]="'Next'" [disabled]="selectedVehicle === null ? true : false" [type]="'theme-color'" [tooltip]="'Proceed to preferred location'" [size]="'large'" (onClick)="onClickHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>

@@ -1,0 +1,311 @@
+/* You can add global styles to this file, and also import other style files */
+
+.rinahomepage {
+    height: 100vh;
+    grid-template-rows: auto 1fr;
+}
+.input-box-checkbox-label{
+    background-color: white;
+}
+td{
+    vertical-align: text-top;
+}
+customer-details table {
+    line-height: 17px!important;
+}
+
+vehicle-details table {
+    line-height: 17px!important;
+}
+
+vehicle-service-history table {
+    line-height: 17px!important;
+}
+
+table tbody {
+    /* font-size: 11px!important; */
+}
+
+.notavailableweekday{
+    text-decoration: none !important;
+}
+
+/*.floatingbutton-circle{
+    line-height : 70px;
+}*/
+.servicelist .card-container {
+    border: none!important;
+    box-shadow: none!important;
+}
+
+.custdetail .card-body {
+    padding: 5px!important;
+}
+
+.amexio-checkbox-style .inputgroup {
+    padding-top: 10px!important;
+}
+
+.vehicle-card .card-container {
+    border: 1px solid #ced4da!important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14)!important;
+}
+
+.remove-border .card-container {
+    border: none!important;
+  box-shadow: none!important;
+}
+
+.content-card {
+  max-width: 200px; height: 200px;
+}
+
+.amexio-checkboxgroup-style .input-box-container {
+  padding-top: 3px!important;
+  padding-bottom: 0px !important;
+}
+
+
+.toolbar{
+    padding: 0px !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .serviceconf amexio-layout-columns {
+    height: auto!important;
+  }
+  .serviceconf .flex-col {
+    padding: 0%!important;
+  }
+
+  .serviceconf .card-container > * {
+    padding-right: 0px!important;
+  }
+
+  .serviceconf amexio-toolbar-item {
+    padding-left: 0px!important;
+  }
+  .serviceconf amexio-layout-item {
+    width: 93%!important;
+  }
+  .toolbaritemseperatorright {
+    padding-right: 2px!important;
+  }
+}
+
+
+
+
+
+/*
+.card-container {
+  border: none!important;
+  box-shadow: none!important;
+}*/
+
+.amexio-checkbox-style .inputgroup {
+  padding-top: 10px!important;
+}
+
+.vehicle-card .card-container {
+  border: 1px solid #ced4da!important;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14)!important;
+}
+
+.notavailableweekday {
+  text-decoration: none !important;
+}
+
+.remove-border .card-container {
+  border: none!important;
+  box-shadow: none!important;
+}
+
+.content-card {
+  max-width: 200px;
+  height: 200px;
+}
+
+.toolbar {
+  padding: 0px !important;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .serviceconf amexio-layout-columns {
+    height: auto!important;
+  }
+  .serviceconf .flex-col {
+    padding: 0%!important;
+  }
+  .serviceconf .card-container>* {
+    padding-right: 0px!important;
+  }
+  .serviceconf amexio-toolbar-item {
+    padding-left: 0px!important;
+  }
+  .serviceconf amexio-layout-item {
+    width: 93%!important;
+  }
+  .toolbaritemseperatorright {
+    padding-right: 2px!important;
+  }
+}
+
+.alfahim-root-window {
+  background: rgba(128, 127, 127, 0.6);
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left:0;
+  position: fixed;
+}
+
+.alfahim-root-window > div{
+  display: flex; flex-direction: row; justify-content: center;
+}
+
+.alfahim-root-window-inner{
+  height: auto; width: 100%;
+}
+
+.alfahim-root-window-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: white;
+  background-color: white;
+  height: auto;
+  min-width: 50%;
+  width: auto;
+  max-width: 80%;
+}
+
+.inputgroup > label {
+  margin-bottom: unset;
+}
+
+.alfahim-root-window-content> existing-customer {
+  width: 100%;
+  height: 100%;
+}
+
+.amexio-layout-columns-height {
+  height: unset !important;
+}
+
+.layout-width{
+  width: 300px;
+}
+
+.timebox-width {
+  width: 100px;
+}
+
+.alfahimstepbox{
+  display: flex; flex-direction: row; justify-content: space-evenly; position: relative;
+
+}
+
+.alfahimstepbox:before {
+  background-color:lightgray;
+  top: 50%;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 1px;
+  z-index: 0;
+}
+
+.alfahimstepboxitems{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size : 2em;
+}
+
+.alfahimstepboxitems-active{
+  color: black;
+}
+
+.alfahimstepboxitems-deactive{
+  color: lightgray;
+}
+
+quick-booking  {
+  height: auto;
+}
+
+.hideinmobiledeivce{
+  display: block;
+  height: 0px;
+}
+@media only screen and (max-width: 600px) {
+  .alfahim-root-window-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .button-large{
+    padding: 0.5rem;
+  }
+
+  otp-component {
+    height: 100%;
+  }
+  appointment-confirmation {
+    height: 100%;
+  }
+
+  quick-booking {
+    height: 100%;
+  }
+
+  .alfahim-root-window-inner{
+    height: 100%; width: 100%;
+  }
+
+  .amexio-badge{
+    position: relative !important;
+  }
+
+  .layout-width{
+    width: 100%;
+  }
+
+  .timebox-width {
+    width: 100%;
+  }
+
+  .datatable-height .datatable .datatable-col {
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+  }
+
+  .disabledOriginStyle {
+    cursor: not-allowed !important;
+    pointer-events: none!important;
+    color: red;
+  }
+
+}

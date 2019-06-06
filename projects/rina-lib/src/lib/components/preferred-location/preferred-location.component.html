@@ -1,0 +1,40 @@
+
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      Preferred location
+    </amexio-label>
+  </amexio-header-ce>
+  <rina-step-box [active-index]="4"></rina-step-box>
+  <amexio-body-ce [align]="'start'">
+
+    <service-availiblity-lib #formgroup [service-model]="serviceModel" [start-time]="10" [end-time]="15"></service-availiblity-lib>
+
+  </amexio-body-ce>
+
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right>
+        <div class="amexio-checkbox-style">
+          <amexio-checkbox [field-label]="'Notify SA'" [(ngModel)]="serviceModel.isNotifySA">
+          </amexio-checkbox>
+        </div>
+
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" [type]="'theme-backgroundcolor'" [tooltip]="'Proceed to personal profile'" [size]="'large'" (onClick)="backClick($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right>
+        <amexio-button [label]="'Schedule'" [disabled]="!this.serviceModel.isValidate()" [type]="'theme-color'" [tooltip]="'Proceed to preferred location'" [size]="'large'" (onClick)="scheduleAppointment()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+
+</amexio-card-ce>

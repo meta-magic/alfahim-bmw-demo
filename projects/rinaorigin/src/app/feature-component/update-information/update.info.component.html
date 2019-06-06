@@ -1,0 +1,84 @@
+<!-- UPDATE INFO-->
+
+<amexio-card-ce >
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      {{'Update Information' | uppercase}}
+    </amexio-label>
+  </amexio-header-ce>
+  <amexio-body-ce [align]="'start'">
+    <amexio-row>
+      <amexio-column [size]="6">
+        <amexio-text-input field-label="Mobile No"
+                           [(ngModel)]="readonlyUpdateInfor.mobile"
+                           name="mobNo1"
+                           [disabled]="true"
+                           place-holder="Enter Mobile Number">
+        </amexio-text-input>
+        <amexio-email-input field-label="Email"
+                            name="email1"
+                            [(ngModel)]="readonlyUpdateInfor.email"
+                            place-holder="Enter Email"
+                            [disabled]="true"
+                            [icon-feedback]="false">
+        </amexio-email-input>
+        <amexio-textarea-input field-label="Address"
+                               name="address1"
+                               place-holder="Enter Address"
+                               [(ngModel)]="readonlyUpdateInfor.address"
+                               [rows]="'3'"
+                               [columns]="'2'"
+                               [disabled]="true"
+                               [icon-feedback]="false">
+        </amexio-textarea-input>
+      </amexio-column>
+      <amexio-column [size]="6">
+        <form #updateForm="ngForm">
+          <amexio-text-input field-label="Mobile No"
+                             [(ngModel)]="data.mobile"
+                             name="mobNo"
+                             place-holder="Enter Mobile Number"
+                             [icon-feedback]="false">
+          </amexio-text-input>
+          <amexio-email-input field-label="Email"
+                              name="email"
+                              [(ngModel)]="data.email"
+                              place-holder="Enter Email"
+                              [icon-feedback]="false">
+          </amexio-email-input>
+          <amexio-textarea-input field-label="Address"
+                                 name="address"
+                                 place-holder="Enter Address"
+                                 [(ngModel)]="data.address"
+                                 [rows]="'3'"
+                                 [columns]="'2'"
+                                 [icon-feedback]="false">
+          </amexio-textarea-input>
+
+        </form>
+      </amexio-column>
+
+    </amexio-row>
+
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'"
+                       [type]="'theme-backgroundcolor'"
+                       [size]="'large'"
+                       (onClick)="onUpdateInfoCancelHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Submit'"
+                       [type]="'theme-color'"
+                       [size]="'large'"
+                       [disabled]="!updateForm.valid"
+                       (onClick)="onUpdateInfoSubmitHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+

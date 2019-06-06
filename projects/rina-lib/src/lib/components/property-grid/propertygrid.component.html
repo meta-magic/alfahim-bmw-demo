@@ -1,0 +1,45 @@
+<amexio-card [class.remove-border]="!hasBorder" [header]="false" [footer]="false">
+    <amexio-body class="property-style">
+          <div *ngIf="hasRadio && hasRadioTitle && hasRadioTitleData"  class="inputgroup from-group">
+            <label [ngClass]="{'disabled-Style': hasRadioTitleData.disabled}" for="{{hasRadioTitleData.title}}" [attr.aria-checked]="hasRadioTitleData.selected"   class="input-box-container" style="padding-bottom:0px !important;" >
+              <b>{{hasRadioTitleData.title}}</b>
+              <input  [attr.disabled]="hasRadioTitleData.disabled ? true: null" (click)="selectRadio(hasRadioTitleData)"  style="top:0; left:0" id="{{hasRadioTitleData.title}}" type="radio"
+                      name="selectTitle" [value]="hasRadioTitleData.selected"
+                      [checked]="hasRadioTitleData.selected ? true : null">
+
+              <span class="input-box-radiobox-label"></span>
+            </label>
+          </div>
+          <div *ngIf="!hasRadio && hasRadioTitleData">
+            <b>{{hasRadioTitleData.title}}</b>
+          </div>
+
+      <ng-container *ngIf="data && data.length > 0; else elseBlock">
+        <amexio-layout-columns [orientation]="'horizontal'" [border]="false" [alignment]="'end'">
+            <amexio-layout-item style="width: 20%" *ngIf="hasImage">
+              <amexio-image [path]="image" [filter]="'round'">
+              </amexio-image>
+            </amexio-layout-item>
+            <amexio-layout-item [fit]="true">
+                <table style="padding: 2px;">
+                  <tr *ngFor="let item of data">
+                    <td>{{item.fieldName}}:</td>
+                    <td style="word-break: break-all;">{{item.fieldValue}}</td>
+                  </tr>
+                </table>
+
+            </amexio-layout-item>
+          </amexio-layout-columns>
+      </ng-container>
+      <ng-template #elseBlock>
+        Account not found
+      </ng-template>
+      <ng-container *ngIf="hasBadge && badge " >
+        <amexio-badge [absolute]="true" [background]="'red'" [color]="'white'" [bottom]="'0px'" [right]="'0px'">
+          <amexio-label size="medium-bold">{{badge}}</amexio-label>
+        </amexio-badge>
+      </ng-container>
+    </amexio-body>
+</amexio-card>
+
+

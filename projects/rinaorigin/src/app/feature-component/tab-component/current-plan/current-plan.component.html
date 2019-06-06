@@ -1,0 +1,12 @@
+<amexio-card [header]="true"
+             [footer]="false">
+  <amexio-header>
+    YOUR ENERGY PLAN
+  </amexio-header>
+  <amexio-body>
+    <amexio-label size="small-bold">{{currentPlan.plan}}</amexio-label><br><br>
+    <amexio-label size="small-bold">{{currentPlan.benefits[0]}}</amexio-label><br>
+    <amexio-label>{{currentPlan.benefits[1]}}</amexio-label>
+  </amexio-body>
+</amexio-card>
+

@@ -1,0 +1,25 @@
+
+<amexio-card-ce>
+  <amexio-body-ce [align]="'start'">
+    <amexio-layout-columns [border]="false" [orientation]="'vertical'" [alignment]="'space-between'">
+      <amexio-layout-item >
+        <amexio-layout-columns [border]="false" [orientation]="'horizontal'" [alignment]="'center'">
+          <amexio-layout-item [ngClass]="{'content-card': description}">
+            <amexio-image [path]="imageUrl">
+            </amexio-image>
+            <br/>
+            <amexio-label [size]="'medium-bold'" *ngIf="title">{{title}}</amexio-label>
+          </amexio-layout-item>
+        </amexio-layout-columns>
+      </amexio-layout-item>
+
+      <amexio-layout-item style="max-height: 200px; overflow: auto;">
+        <rina-property-grid *ngIf="propertyData.length > 0" [key-value-data]="propertyData" [has-border]="false"></rina-property-grid>
+        <p *ngIf="description">{{description}}</p>
+      </amexio-layout-item>
+    </amexio-layout-columns>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <ng-content></ng-content>
+  </amexio-action-ce>
+</amexio-card-ce>

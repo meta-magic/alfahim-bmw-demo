@@ -1,0 +1,26 @@
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      THANK YOU
+    </amexio-label>
+  </amexio-header-ce>
+  <rina-step-box [active-index]="8"></rina-step-box>
+  <amexio-body-ce [align]="'start'">
+    <amexio-row>
+      <amexio-column size="3"></amexio-column>
+      <amexio-column size="6">
+        <amexio-label>{{appointmentMsg}}</amexio-label><br /><br />
+        <amexio-label>Service Location:</amexio-label><br />
+        <amexio-label>Emirates Motor Company</amexio-label><br />
+        <amexio-label>M5, intersection, 17th Street</amexio-label><br />
+        <amexio-label>Phone: +91.0987654321</amexio-label><br /><br />
+      </amexio-column>
+      <amexio-column size="3"></amexio-column>
+    </amexio-row>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-button [label]="'Close'" [type]="'theme-color'" [tooltip]="'Close'" [size]="'large'" (onClick)="close($event)">
+    </amexio-button>
+  </amexio-action-ce>
+</amexio-card-ce>

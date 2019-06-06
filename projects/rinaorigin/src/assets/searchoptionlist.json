@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "key": "Account Number",
+      "id": 1,
+      "selected": true,
+      "disabled": false
+    },
+    {
+      "key": "Mobile Number",
+      "id": 2,
+      "selected": false,
+      "disabled": false
+    },
+    {
+      "key": "NMI",
+      "id": 3,
+      "selected": false,
+      "disabled": false
+    },
+    {
+      "key": "MIRN",
+      "id": 4,
+      "selected": false,
+      "disabled": false
+    },
+    {
+      "key": "Advanced Search",
+      "id": 4,
+      "selected": false,
+      "disabled": true
+    }
+  ]
+}

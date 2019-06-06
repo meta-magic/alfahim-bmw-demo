@@ -1,0 +1,137 @@
+
+
+<ng-container *ngIf="show || showEnergyDetails">
+  <amexio-badge  [absolute]="true" [background]="'black'" [color]="'white'" [top]="'0'" [right]="'0'">
+    <amexio-label style="padding:10px 20px;" size="medium">Change Energy Plan</amexio-label>
+  </amexio-badge>
+</ng-container>
+<amexio-card-ce *ngIf="show">
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+     {{'Energy Plans' | uppercase}}
+    </amexio-label>
+  </amexio-header-ce><br>
+  <amexio-body-ce [align]="'start'">
+    <amexio-row>
+      <amexio-column [size]="4">
+        <amexio-label>CURRENT ENERGY PLAN</amexio-label><br>
+        <amexio-label size="medium-bold"> {{data.currentEnergyPlan.plan}}</amexio-label><br>
+        <amexio-label *ngFor="let bn of data.currentEnergyPlan.benefits">{{bn}}</amexio-label><br>
+      </amexio-column>
+      <amexio-column [size]="4" *ngFor="let peplan of data.purposedEnergyPlan">
+        <amexio-card-ce >
+          <amexio-header-ce [background]="'transparent'" [border-bottom]="true">
+            <div *ngIf="peplan.estimatedElectricityPrice == null">
+              <b>{{peplan.name | uppercase}} <span  style="color: red"> &nbsp;( plan unavailable )</span></b>
+            </div>
+            <div *ngIf="peplan.estimatedElectricityPrice != null">
+              <label for="{{peplan.name}}" [attr.aria-checked]="peplan.selected" [ngClass]="{'disabledStyle': peplan.estimatedElectricityPrice == null}"
+                     style="margin-top: 0px !important;padding-bottom: 0px!important; margin-bottom: 0px!important; "  class="input-box-container" (click)="selectPlan(peplan)">
+                <b>{{peplan.name | uppercase}} </b>
+                <input  style="top:0; left:0" id="{{peplan.name}}" type="radio"
+                        name="selectplan" [value]="peplan.selected"
+                        [checked]="peplan.selected">
+                <span class="input-box-radiobox-label"></span>
+              </label>
+            </div>
+
+          </amexio-header-ce>
+          <amexio-body-ce [height]="'100px'">
+            <amexio-label >{{peplan.electricityUsageCharges}}</amexio-label><br>
+            <amexio-label >{{peplan.naturalGasUsageCharges}}</amexio-label><br>
+          </amexio-body-ce>
+        </amexio-card-ce>
+      </amexio-column>
+    </amexio-row>
+  </amexio-body-ce><br>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel()">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Next'" [disabled]="!selectedPlan" [type]="'theme-color'"  [size]="'large'" (onClick)="onNextHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+
+<amexio-card-ce *ngIf="showEnergyDetails">
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+        {{'Plan Details' | uppercase}}
+    </amexio-label>
+  </amexio-header-ce>
+  <amexio-body-ce [align]="'start'">
+    <ng-container *ngIf="showEnergyDetails">
+      <amexio-row>
+        <amexio-column [size]="4">
+          <amexio-label size="medium-bold">{{planDetails.name}}</amexio-label><br><br>
+          <amexio-label >{{planDetails.electricityUsageCharges}}</amexio-label><br>
+          <amexio-label size="medium-bold">Plan Summary</amexio-label><hr>
+          <amexio-label size="medium-bold">General Charges</amexio-label><br>
+          <amexio-label >Daily supply Charge: {{planDetails.dailySupplyCharges}}</amexio-label><br>
+          <amexio-label >General usage rate: {{planDetails.generalUsageRates}}</amexio-label><br><br>
+          <amexio-label >Connection fee <b>{{planDetails.connectionFee}}</b></amexio-label>
+        </amexio-column>
+        <amexio-column [size]="8">
+          <amexio-datagrid title="Estimated Electricity Price"
+                             [data]="planDetails.estimatedElectricityPrice">
+            <amexio-data-table-column
+              [data-index]="'noOfPerson'"
+              [data-type]="'string'"
+              [text]="''">
+              <ng-template #amexioBodyTmpl let-column let-row="row">
+                <ng-container *ngIf="row.noOfPerson == '1 person'; else elseBlock">
+                  <i class="fa fa-user" style="font-size: 30px;" aria-hidden="true"></i> &nbsp; {{row.noOfPerson}}
+                </ng-container>
+                <ng-template #elseBlock>
+                  <i class="fa fa-users" style="font-size: 30px;" aria-hidden="true"></i> &nbsp; {{row.noOfPerson}}
+                </ng-template>
+
+              </ng-template>
+            </amexio-data-table-column>
+            <amexio-data-table-column
+              [data-index]="'energyConsumption'"
+              [data-type]="'string'">
+            </amexio-data-table-column>
+            <amexio-data-table-column
+              [data-index]="'priceWithDiscount'"
+              [data-type]="'string'">
+            </amexio-data-table-column>
+            <amexio-data-table-column
+              [data-index]="'price'"
+              [data-type]="'string'">
+            </amexio-data-table-column>
+          </amexio-datagrid>
+        </amexio-column>
+      </amexio-row>
+
+    </ng-container>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'"
+                       [type]="'theme-backgroundcolor'"
+                       [size]="'large'"
+                       (onClick)="onBackClick()">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Select Plan'"
+                       [type]="'theme-color'"
+                       [size]="'large'"
+                       (onClick)="onSelectPlanClick()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+

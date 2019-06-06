@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data":[
+    {
+      "serviceType": "Service Booking"
+    },
+    {
+      "serviceType": "General Inquiry"
+    },
+    {
+      "serviceType": "Complaint"
+    },
+    {
+      "serviceType": "ACW 4"
+    },
+    {
+      "serviceType": "ACW 5"
+    }
+  ]
+}

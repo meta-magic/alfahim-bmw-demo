@@ -1,0 +1,67 @@
+
+    <amexio-layout-columns [orientation]="'horizontal'" [fit]="true" [alignment]="'start'" [border]="false">
+      <amexio-layout-item >
+        <amexio-layout-columns [orientation]="'vertical'" [fit]="true" [alignment]="'start'" [border]="false">
+          <amexio-layout-item>
+            <amexio-dropdown [(ngModel)]="serviceModel.location" [enable-sort]="true" [sort]="'asc'" [search]="true" [place-holder]="'Select Location'" name="location" [field-label]="'Select Location'" [data]="serviceLocations" [display-field]="'primaryDisplay'"
+                             [value-field]="'primaryKey'" (onSingleSelect)="onLocationClick($event)">
+            </amexio-dropdown>
+          </amexio-layout-item>
+
+          <amexio-layout-item *ngIf="_windowTService.appType != '1'; else notTime">
+            <amexio-layout-columns [border]="false" [orientation]="'horizontal'" [alignment]="'start'">
+              <amexio-layout-item>
+                <amexio-date-time-picker [field-label]="'Select Date'" [min-date]="minDate" [time-picker]="false" [date-picker]="true" name="appointmentDate" [min-date]="todayDate" [(ngModel)]="serviceModel.appointmentDate">
+                </amexio-date-time-picker>
+              </amexio-layout-item>
+              <amexio-layout-item class="timebox-width">
+                  <amexio-dropdown [(ngModel)]="serviceModel.appointmentTime" [enable-sort]="true" [sort]="'asc'" [search]="true" (onSingleSelect)="setTime($event)" [place-holder]="'Select Time'" name="appointmentTime" [field-label]="'Select time'" [data]="timeSlots" [display-field]="'time'"
+                                   [value-field]="'timeId'">
+                  </amexio-dropdown>
+              </amexio-layout-item>
+            </amexio-layout-columns>
+          </amexio-layout-item>
+
+          <ng-template #notTime>
+            <amexio-layout-item>
+              <amexio-date-time-picker [field-label]="'Select Date'" [min-date]="minDate" [time-picker]="false" [date-picker]="true" name="appointmentDate" [min-date]="todayDate" [(ngModel)]="serviceModel.appointmentDate">
+              </amexio-date-time-picker>
+            </amexio-layout-item>
+          </ng-template>
+
+
+
+
+          <amexio-layout-item>
+            <amexio-dropdown [(ngModel)]="serviceModel.assitantPersonId" [enable-sort]="true" [sort]="'asc'" [search]="true" [place-holder]="'Select SA'" name="assitantPerson" [field-label]="'Service Advisor (SA)'" [data]="assitantPerson" [display-field]="'primaryDisplay'"
+                             [value-field]="'primaryKey'" (onSingleSelect)="onAssitantClick($event)">
+            </amexio-dropdown>
+          </amexio-layout-item>
+
+
+
+          <amexio-layout-item>
+            <amexio-button [label]="'CHECK SA AVAILIBLITY'" [type]="'theme-color'" [tooltip]="'CHECK SA AVAILIBLITY'" (onClick)="checkAvailiblity()"></amexio-button>
+          </amexio-layout-item>
+
+          <amexio-layout-item>
+            <amexio-ee-appointment [height]="'200px'"
+                                   [available-slots-color]="'white'"
+                                   [available-slots-bg-color]="'#4CAF50'"
+                                   [selected-slot-bg-color]="'yellow'"
+                                   [selected-slot-color]="'green'"
+                                   [date]="serviceModel.appointmentDate" [start-time]="serviceModel.appointmentTime"
+                                   [end-time]="endTime" [available-slots]="availableslots" (onSingleSelect)="onSlotSelection($event)">
+
+            </amexio-ee-appointment>
+
+          </amexio-layout-item>
+        </amexio-layout-columns>
+      </amexio-layout-item>
+      <amexio-layout-item [fit]="true">
+        <amexio-google-map [initial-zoom-level]="8" [initial-lat]="24.4086" [initial-lng]="55.2701" [height]="'100%'" [data]="serviceStations" (onMarkerClick)="onMarkerClick($event)" [google-map-key]="'AIzaSyDKSPX97z-ndeh_Mgq3xkaML2Kp9AwHA9s'">
+        </amexio-google-map>
+      </amexio-layout-item>
+
+    </amexio-layout-columns>
+

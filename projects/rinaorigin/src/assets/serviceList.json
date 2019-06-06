@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data": [
+    {
+     "serviceName": "CHANGE ENERGY PLAN",
+      "disabled": true,
+      "type": "CEP"
+    },
+    {
+      "serviceName": "UPDATE INFORMATION",
+      "disabled": true,
+      "type": "UI"
+    },
+    {
+      "serviceName": "CHANGE ADDRESS",
+      "disabled": true,
+      "type": "CA"
+    },
+    {
+      "serviceName": "WAIVERS",
+      "disabled": true,
+      "type": "WI"
+    },
+    {
+      "serviceName": "ESCALATION",
+      "disabled": true,
+      "type": "WP"
+    },
+    {
+      "serviceName": "WORKFLOW",
+      "disabled": true,
+      "type": "WP"
+    }
+  ]
+}

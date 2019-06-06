@@ -1,0 +1,560 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "rina": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rina",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "node_modules/amexio-ng-extensions/styles/css/at-md-black.css",
+              "node_modules/font-awesome/scss/font-awesome.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rina:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rina:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rina:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rina-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "rina:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rina:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rina-lib": {
+      "root": "projects/rina-lib",
+      "sourceRoot": "projects/rina-lib/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/rina-lib/tsconfig.lib.json",
+            "project": "projects/rina-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rina-lib/src/test.ts",
+            "tsConfig": "projects/rina-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/rina-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rina-lib/tsconfig.lib.json",
+              "projects/rina-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "alfahim": {
+      "root": "projects/alfahim/",
+      "sourceRoot": "projects/alfahim/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/alfahim",
+            "index": "projects/alfahim/src/index.html",
+            "main": "projects/alfahim/src/main.ts",
+            "polyfills": "projects/alfahim/src/polyfills.ts",
+            "tsConfig": "projects/alfahim/tsconfig.app.json",
+            "assets": [
+              "projects/alfahim/src/favicon.ico",
+              "projects/alfahim/src/assets"
+            ],
+            "styles": [
+              "node_modules/amexio-ng-extensions/styles/css/at-md-black.css",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "projects/alfahim/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/alfahim/src/environments/environment.ts",
+                  "with": "projects/alfahim/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "alfahim:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "alfahim:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "alfahim:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/alfahim/src/test.ts",
+            "polyfills": "projects/alfahim/src/polyfills.ts",
+            "tsConfig": "projects/alfahim/tsconfig.spec.json",
+            "karmaConfig": "projects/alfahim/karma.conf.js",
+            "styles": [
+              "projects/alfahim/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/alfahim/src/favicon.ico",
+              "projects/alfahim/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/alfahim/tsconfig.app.json",
+              "projects/alfahim/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "alfahim-e2e": {
+      "root": "projects/alfahim-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/alfahim-e2e/protractor.conf.js",
+            "devServerTarget": "alfahim:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "alfahim:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/alfahim-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rinaalfahim": {
+      "root": "projects/rinaalfahim/",
+      "sourceRoot": "projects/rinaalfahim/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rinaalfahim",
+            "index": "projects/rinaalfahim/src/index.html",
+            "main": "projects/rinaalfahim/src/main.ts",
+            "polyfills": "projects/rinaalfahim/src/polyfills.ts",
+            "tsConfig": "projects/rinaalfahim/tsconfig.app.json",
+            "assets": [
+              "projects/rinaalfahim/src/favicon.ico",
+              "projects/rinaalfahim/src/assets"
+            ],
+            "styles": [
+              "node_modules/amexio-ng-extensions/styles/css/at-md-pumpkin-fire.css",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "projects/rinaalfahim/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/rinaalfahim/src/environments/environment.ts",
+                  "with": "projects/rinaalfahim/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rinaalfahim:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rinaalfahim:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rinaalfahim:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rinaalfahim/src/test.ts",
+            "polyfills": "projects/rinaalfahim/src/polyfills.ts",
+            "tsConfig": "projects/rinaalfahim/tsconfig.spec.json",
+            "karmaConfig": "projects/rinaalfahim/karma.conf.js",
+            "styles": [
+              "projects/rinaalfahim/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/rinaalfahim/src/favicon.ico",
+              "projects/rinaalfahim/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rinaalfahim/tsconfig.app.json",
+              "projects/rinaalfahim/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rinaalfahim-e2e": {
+      "root": "projects/rinaalfahim-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/rinaalfahim-e2e/protractor.conf.js",
+            "devServerTarget": "rinaalfahim:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rinaalfahim:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/rinaalfahim-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rinaorigin": {
+      "root": "projects/rinaorigin/",
+      "sourceRoot": "projects/rinaorigin/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rinaorigin",
+            "index": "projects/rinaorigin/src/index.html",
+            "main": "projects/rinaorigin/src/main.ts",
+            "polyfills": "projects/rinaorigin/src/polyfills.ts",
+            "tsConfig": "projects/rinaorigin/tsconfig.app.json",
+            "assets": [
+              "projects/rinaorigin/src/favicon.ico",
+              "projects/rinaorigin/src/assets"
+            ],
+            "styles": [
+              "node_modules/amexio-ng-extensions/styles/css/at-md-pumpkin-fire.css",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+               "node_modules/amexio-chart-d3/lib/styles/amexio-chart-d3-components.css",
+              "projects/rinaorigin/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/rinaorigin/src/environments/environment.ts",
+                  "with": "projects/rinaorigin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rinaorigin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rinaorigin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rinaorigin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rinaorigin/src/test.ts",
+            "polyfills": "projects/rinaorigin/src/polyfills.ts",
+            "tsConfig": "projects/rinaorigin/tsconfig.spec.json",
+            "karmaConfig": "projects/rinaorigin/karma.conf.js",
+            "styles": [
+              "projects/rinaorigin/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/rinaorigin/src/favicon.ico",
+              "projects/rinaorigin/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rinaorigin/tsconfig.app.json",
+              "projects/rinaorigin/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rinaorigin-e2e": {
+      "root": "projects/rinaorigin-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/rinaorigin-e2e/protractor.conf.js",
+            "devServerTarget": "rinaorigin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rinaorigin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/rinaorigin-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "rina"
+}

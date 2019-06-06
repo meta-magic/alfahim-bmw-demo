@@ -1,0 +1,74 @@
+<amexio-floating-button [vertical-position]="'bottom'" [size]="'large'" [horizontal-position]="'right'" (onClick)="onClick()" [label]="'Book Service'" [type]="'yellow'" [icon]="'fa fa-car fa-2x'" [type]="'theme-color'">
+</amexio-floating-button>
+
+<div *ngIf="windowEnable" class="alfahim-root-window">
+  <div class="hideinmobiledeivce"> &nbsp; </div>
+  <div class="alfahim-root-window-inner">
+    <div class="alfahim-root-window-content">
+      <amexio-badge [absolute]="true" [background]="'black'" [color]="'white'" [top]="'0'" [right]="'0'">
+        <amexio-label style="padding:10px 20px;" size="medium">New Service Booking</amexio-label>
+      </amexio-badge>
+        <quick-booking *ngIf="(currentstep === 1)"
+                       (onNext)="quickBookingHandle($event)"
+                       (onNewCustomer)="onNewCustomerHandle($event)"
+                       (onClose)="onCloseClick($event)">
+        </quick-booking>
+
+
+        <customer-vehicle-list *ngIf="(currentstep === 2)" [customer-profile]="customerProfile" (onClose)="onCloseClick($event)" (onBack)="vehicleListBack($event)" (onVehicleListNext)="onVehicleListHandle($event)"></customer-vehicle-list>
+        <personal-details *ngIf="(currentstep === 3)" [person-detail]="personalDetails" (onBack)="bookingFlow($event)" (onNext)="proceedToPreferredLocation($event)" (onClose)="onCloseClick($event)"></personal-details>
+        <preferred-location *ngIf="(currentstep === 4)" [service-model]="serviceModel" (onClose)="onCloseClick($event)" (onNext)="scheduleAppointment($event)" (onPrevious)="onPrevious($event)"></preferred-location>
+        <service-job-type *ngIf="(currentstep === 5)" (onNext)="onServiceTypeNextHandle($event)" (onBack)="onServiceTypeBackHandle($event)" (onClose)="onCloseClick($event)"></service-job-type>
+        <before-confirm *ngIf="(currentstep === 6)" (onBeforeBack)="onBeforeBackHandle($event)" (onClose)="onCloseClick($event)" (onBeforeConfirmClick)="onBeforeConfirmClickHandle($event)"></before-confirm>
+        <service-confirmation *ngIf="(currentstep === 7)" [service-model]="serviceModel" (onClose)="onCloseClick($event)" (onPrevious)="onServiceConfirmPrevious($event)" (onConfirm)="onAppointmentConfirm($event)">
+        </service-confirmation>
+        <appointment-confirmation *ngIf="(currentstep === 8)" (onConfirm)="onCloseClick($event)" [appointment-msg]="appointmentMsg"></appointment-confirmation>
+        <otp-component [next-window]="otpWindowRefNumber" *ngIf="(currentstep === 11)" [otp-type]="otpType" [otp-ref]="otpRef" [email]="emailId" (onNext)="onOtpNextHandle($event)" (onBack)="onOtpBackHandle($event)" (onClose)="onCloseClick($event)"></otp-component>
+    </div>
+</div>
+  <div class="hideinmobiledeivce"> &nbsp; </div>
+</div>
+
+
+<amexio-spinner [show]="NaLService.showLoader" [type]="'rectanglebounce'" [vertical-position]="'center'" [horizontal-position]="'center'" [color]="'yellow'">
+</amexio-spinner>
+
+
+
+     <!-- <div *ngIf="windowEnable" class="alfahim-root-window">
+        <div class="alfahim-root-window-content">
+          <amexio-layout-columns class="amexio-layout-columns-height " *ngIf="(currentstep > 2 && currentstep != 11)" [orientation]="'horizontal'" [border]="false">
+            <amexio-layout-item [fit]="true">
+              <amexio-steps [icon]="true">
+                <amexio-step-block [label]="'User'" [active]="(currentstep === 3)" [icon]="'fa fa-user fa-2x'">
+                </amexio-step-block>
+                <amexio-step-block [label]="'Location'" [active]="(currentstep === 4)" [icon]="'fa fa-map-marker fa-2x'">
+                </amexio-step-block>
+                <amexio-step-block [label]="'Service Type'" [active]="(currentstep === 5)" [icon]="'fa fa-cubes fa-2x'">
+                </amexio-step-block>
+                <amexio-step-block [label]="'Sale'" [active]="(currentstep === 6)" [icon]="'fa fa-superpowers fa-2x'">
+                </amexio-step-block>
+                <amexio-step-block [label]="'Confirm'" [active]="(currentstep === 7)" [icon]="'fa fa-check-circle fa-2x'">
+                </amexio-step-block>
+                <amexio-step-block [label]="'Info'" [active]="(currentstep === 8)" [icon]="'fa fa-info fa-2x'">
+                </amexio-step-block>
+              </amexio-steps>
+            </amexio-layout-item>
+          </amexio-layout-columns>
+          <existing-customer *ngIf="(currentstep === 1)"></existing-customer>
+
+          <booking-flow *ngIf="(currentstep === 0)" (bookingFlow)="bookingFlowHandle($event)"></booking-flow>
+          &lt;!&ndash; <quick-booking *ngIf="(currentstep === 1)" (onNext)="quickBookingHandle($event)" (onBack)="quickBookingBack($event)" (onClose)="onCloseClick($event)"></quick-booking>&ndash;&gt;
+          <customer-vehicle-list *ngIf="(currentstep === 2)" [customer-profile]="customerProfile" (onClose)="onCloseClick($event)" (onBack)="vehicleListBack($event)" (onVehicleListNext)="onVehicleListHandle($event)"></customer-vehicle-list>
+          <personal-details *ngIf="(currentstep === 3)" [person-detail]="personalDetails" (onBack)="bookingFlow($event)" (onNext)="proceedToPreferredLocation($event)" (onClose)="onCloseClick($event)"></personal-details>
+          <preferred-location *ngIf="(currentstep === 4)" [service-model]="serviceModel" (onClose)="onCloseClick($event)" (onNext)="scheduleAppointment($event)" (onPrevious)="onPrevious($event)"></preferred-location>
+          <service-job-type *ngIf="(currentstep === 5)" (onNext)="onServiceTypeNextHandle($event)" (onBack)="onServiceTypeBackHandle($event)" (onClose)="onCloseClick($event)"></service-job-type>
+          <before-confirm *ngIf="(currentstep === 6)" (onBeforeBack)="onBeforeBackHandle($event)" (onClose)="onCloseClick($event)" (onBeforeConfirmClick)="onBeforeConfirmClickHandle($event)"></before-confirm>
+          <service-confirmation *ngIf="(currentstep === 7)" [service-model]="serviceModel" (onClose)="onCloseClick($event)" (onPrevious)="onServiceConfirmPrevious($event)" (onConfirm)="onAppointmentConfirm($event)">
+          </service-confirmation>
+          <appointment-confirmation *ngIf="(currentstep === 8)" (onConfirm)="onCloseClick($event)" [appointment-msg]="appointmentMsg"></appointment-confirmation>
+          <otp-component [next-window]="otpWindowRefNumber" *ngIf="(currentstep === 11)" [otp-type]="otpType" [otp-ref]="otpRef" [email]="emailId" (onNext)="onOtpNextHandle($event)" (onBack)="onOtpBackHandle($event)" (onClose)="onCloseClick($event)"></otp-component>
+        </div>
+      </div>-->
+
+

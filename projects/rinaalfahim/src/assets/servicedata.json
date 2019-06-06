@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data":[
+      {
+        "code":"SER",
+        "date":"09/30/2018",
+        "mileage":"90208",
+        "details":"11/service",
+        "wip":"15750",
+        "account":"C1101300",
+        "value":"5300",
+        "invoice":"11617900",
+        "jobNo":"2721784",
+        "branch":"W11"
+      },
+      {
+        "code":"EXW",
+        "date":"09/30/2018",
+        "mileage":"90100",
+        "details":"11/Extended Warranty",
+        "wip":"15750",
+        "account":"E0003600",
+        "value":"6771.45",
+        "invoice":"11615454",
+        "jobNo":"2721784",
+        "branch":"W11"
+      },
+      {
+        "code":"SER",
+        "date":"04/08/2018",
+        "mileage":"74924",
+        "details":"11/service",
+        "wip":"12588",
+        "account":"C1101300",
+        "value":"2750",
+        "invoice":"11617900",
+        "jobNo":"2722662",
+        "branch":"W11"
+      }
+    ]
+}

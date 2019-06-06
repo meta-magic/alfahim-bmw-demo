@@ -1,0 +1,56 @@
+
+<amexio-card *ngFor="let vehicleModel of vehicleDetails; let i= index"
+             [header]="false"
+             [footer]="false">
+    <amexio-body >
+      <div style="cursor: pointer" (click)="onCardClick(vehicleModel)">
+         <amexio-row >
+        <amexio-column [size]="6">
+          <amexio-label>{{i+1}}/{{vehicleDetails.length}}: &nbsp;  {{vehicleModel.vehicleDetail.modelName}}</amexio-label>
+          <amexio-image [path]="vehicleModel.vehicleDetail.image"></amexio-image><br>
+        </amexio-column>
+        <amexio-column [size]="6">
+          <table>
+            <tr>
+              <td>Engine</td>
+              <td>: {{vehicleModel.vehicleDetail.engine}}</td>
+            </tr>
+            <tr>
+              <td>Horsepower</td>
+              <td>: {{vehicleModel.vehicleDetail.horsepower}}</td>
+            </tr>
+            <tr>
+              <td>Torque rpm</td>
+              <td>: {{vehicleModel.vehicleDetail.torque}}</td>
+            </tr>
+            <tr>
+              <td>Acceleration</td>
+              <td>: {{vehicleModel.vehicleDetail.acceleration}}</td>
+            </tr>
+            <tr>
+              <td>Top Speed</td>
+              <td>: {{vehicleModel.vehicleDetail.topSpeed}}</td>
+            </tr>
+            <tr>
+              <td>Model Year</td>
+              <td>: {{vehicleModel.vehicleDetail.modelYear}}</td>
+            </tr>
+            <tr>
+              <td>Registration No</td>
+              <td>: {{vehicleModel.registrationNo}}</td>
+            </tr>
+            <tr>
+              <td>Date of Purchase</td>
+              <td>: {{vehicleModel.dateOfPurchase}}</td>
+            </tr>
+            <tr>
+              <td>Purchased from</td>
+              <td>: {{vehicleModel.bu}}</td>
+            </tr>
+          </table>
+        </amexio-column>
+      </amexio-row>
+      </div>
+    </amexio-body>
+</amexio-card>
+

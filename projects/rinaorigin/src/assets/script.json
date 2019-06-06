@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data":[
+    {
+      "scriptName":"Script One",
+      "scriptUrl":"Script One"
+    },
+    {
+      "scriptName":"Script Two",
+      "scriptUrl":"Script Two"
+    }
+  ]
+}

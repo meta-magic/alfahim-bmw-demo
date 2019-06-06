@@ -1,0 +1,212 @@
+<ng-container *ngIf="rightSell">
+    <amexio-card [header]="true" [footer]="false">
+        <amexio-header>
+            OFFER : MINI SOLAR SYSTEM , SAVING {{rightSell.saving}} ON AVERAGE QUARTERLY BILL
+        </amexio-header>
+        <amexio-body>
+            <amexio-row>
+                <amexio-column size="6" [fit]="true">
+                    <table style="width: 100%">
+                        <tr>
+                            <td><b>PostCode:</b></td>
+                            <td>{{rightSell.postCode}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Average 3 month electricity bill:</b></td>
+                            <td>{{rightSell.avg3MonthElectricityBill}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Energy Usage Pattern:</b></td>
+                            <td><b>{{rightSell.energyUsagePattern}}</b></td>
+                        </tr>
+                    </table>
+                </amexio-column>
+                <amexio-column size="6" [fit]="true">
+                    <amexio-row>
+                        <amexio-column size="4">
+                            <b>Mini system</b><br> {{rightSell.miniSystem}}
+                        </amexio-column>
+                        <amexio-column size="4">
+                            <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'horizontal'" [alignment]="space-between">
+                                <amexio-layout-item>
+                                    <amexio-image [icon-class]="'fa fa-square-o fa-3x'">
+                                    </amexio-image>
+                                </amexio-layout-item>
+                                <amexio-layout-item>
+                                    <b>{{rightSell.energy}}</b><br> invertor
+                                </amexio-layout-item>
+                            </amexio-layout-columns>
+                        </amexio-column>
+                        <amexio-column size="4">
+                            <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'horizontal'" [alignment]="space-between">
+                                <amexio-layout-item>
+                                    <amexio-image style="color:blue" [icon-class]="'fa fa-th fa-3x'">
+                                    </amexio-image>
+                                </amexio-layout-item>
+                                <amexio-layout-item>
+                                    <b>{{rightSell.noOfSolarPanels}}</b><br> solar panels
+                                </amexio-layout-item>
+                            </amexio-layout-columns>
+                        </amexio-column>
+                    </amexio-row>
+                </amexio-column>
+            </amexio-row>
+            <amexio-row>
+                <amexio-column size="6">
+                    <amexio-label size="large" font-color="green">
+                        {{rightSell.saving}}
+                    </amexio-label>
+                    <span><amexio-label size="small">Estimated savings on your average quarterly bill</amexio-label></span>
+                    <br>
+                    <amexio-row>
+                        <amexio-column size="6">
+                            <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'horizontal'" [alignment]="space-between">
+                                <amexio-layout-item>
+                                    <amexio-image [icon-class]="'fa fa-usd fa-3x'">
+                                    </amexio-image>
+                                </amexio-layout-item>
+                                <amexio-layout-item>
+                                    <span>Your system will cost</span><br>
+                                    <b>{{rightSell.systemCost}}</b>
+                                </amexio-layout-item>
+                            </amexio-layout-columns>
+                        </amexio-column>
+                        <amexio-column size="6">
+                            <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'horizontal'" [alignment]="space-between">
+                                <amexio-layout-item>
+                                    <amexio-image [icon-class]="'fa fa-calendar-minus-o fa-3x'">
+                                    </amexio-image>
+                                </amexio-layout-item>
+                                <amexio-layout-item>
+                                    <span>It'll be paying for itself in</span><br>
+                                    <b>{{rightSell.years}}</b>
+                                </amexio-layout-item>
+                            </amexio-layout-columns>
+                        </amexio-column>
+                    </amexio-row>
+                </amexio-column>
+                <amexio-column size="6">
+                    <amexio-image height="180px" width="100%" [path]="'assets/images/solarsystem.jpeg'">
+                    </amexio-image>
+                </amexio-column>
+            </amexio-row>
+            <amexio-row>
+                <amexio-column size="4">
+                    <b>How was this worked out ?</b><br>
+                    <p>We estimate a potential savings of <b style="color:green">{{rightSell.totalCost}}</b> based on:</p>
+                    <p>
+                        Your average quarterly bill of <b>{{rightSell.avg3MonthElectricityBill}}</b>, with most of your energy
+                        used <b>both during {{rightSell.energyUsagePattern}}</b>, which means you'd likely use <b>{{rightSell.usedEnergy}}</b>                        of the solar energy you generate.
+                    </p>
+                </amexio-column>
+                <amexio-column [fit]="true" size="8">
+
+                    <amexio-datagrid [enable-column-fiter]="false" [data]="rightSell.solarEnergyUse">
+                        <amexio-data-table-column [width]="25" [data-index]="'label'" [data-type]="'string'" [hidden]="false" [text]="''">
+                        </amexio-data-table-column>
+                        <amexio-data-table-column [width]="15" [data-index]="'energy'" [data-type]="'string'" [hidden]="false" [text]="''">
+                        </amexio-data-table-column>
+                        <amexio-data-table-column [width]="15" [data-index]="'cost'" [data-type]="'string'" [hidden]="false" [text]="''">
+                        </amexio-data-table-column>
+                        <amexio-data-table-column [width]="15" [data-index]="'totalCost'" [data-type]="'string'" [hidden]="false" [text]="''">
+                        </amexio-data-table-column>
+                    </amexio-datagrid>
+                </amexio-column>
+                <amexio-column size="12">
+                    <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'horizontal'" [alignment]="'end'">
+                        <amexio-layout-item>
+                            <amexio-button [label]="'EMAIL QUOTE'" [type]="'theme-color'" [size]="'default'">
+                            </amexio-button>
+                        </amexio-layout-item>
+                        <amexio-layout-item>
+                            <amexio-button [label]="'ENROL NOW'" [type]="'theme-color'" [size]="'default'">
+                            </amexio-button>
+                        </amexio-layout-item>
+                    </amexio-layout-columns>
+                </amexio-column>
+            </amexio-row>
+        </amexio-body>
+    </amexio-card>
+</ng-container>
+<ng-container *ngIf="upSell">
+    <amexio-card [header]="true" [footer]="false">
+        <amexio-header>
+            OFFER : RIGHT ENERGY PLAN FOR YOU
+        </amexio-header>
+        <amexio-body>
+            <amexio-row>
+                <amexio-column size="4" [fit]="true">
+                    <p><b>{{upSell.currentPlan | uppercase}}</b></p>
+                    <p>10% Off our natural gas usage charges when you pay on time.</p>
+                    <p>Discount is based on 8% + 2% online bonus.
+                    </p>
+                    <p>
+                        Includes bonus 2% off our usage charges when you sign up online. Flexible payment options. eBilling and eCorrespondence available.
+                        No exit fees or lock-in contracts</p>
+                </amexio-column>
+                <amexio-column size="8" [fit]="true">
+                    <br>
+                    <amexio-datagrid title="Estimated Price" [data]="upSell.estimatedPrice">
+                        <amexio-data-table-column [data-index]="'noOfPerson'" [data-type]="'string'" [text]="''">
+                            <ng-template #amexioBodyTmpl let-column let-row="row">
+                                <ng-container *ngIf="row.noOfPerson == '1 person'; else elseBlock">
+                                    <i class="fa fa-user" style="font-size: 30px;" aria-hidden="true"></i> &nbsp; {{row.noOfPerson}}
+                                </ng-container>
+                                <ng-template #elseBlock>
+                                    <i class="fa fa-users" style="font-size: 30px;" aria-hidden="true"></i> &nbsp; {{row.noOfPerson}}
+                                </ng-template>
+
+                            </ng-template>
+                        </amexio-data-table-column>
+                        <amexio-data-table-column [data-index]="'energyConsumption'" [data-type]="'string'">
+                        </amexio-data-table-column>
+                        <amexio-data-table-column [data-index]="'priceWithDiscount'" [data-type]="'string'">
+                        </amexio-data-table-column>
+                        <amexio-data-table-column [data-index]="'price'" [data-type]="'string'">
+                        </amexio-data-table-column>
+                    </amexio-datagrid>
+                </amexio-column>
+                <amexio-column size="4" [fit]="true">
+                  <amexio-label
+                        [size]="'medium-bold'">
+                            Price Summary
+                    </amexio-label>
+                        <hr>
+                       <amexio-label
+                        [size]="'medium-bold'">
+                           General charges
+                    </amexio-label> <br>
+                        <span>Daily supply charges:</span>
+                        &nbsp;
+                        <b>{{upSell.dailySupplyCharges}}</b>
+                        <br>
+                        <span>General usage rates:</span>
+                        &nbsp;
+                        <b>{{upSell.generalUsageRates}}</b><br>
+                        <span> <b>ConnectionFee</b></span> &nbsp;{{upSell.connectionFee}}<br>
+                        <BR>
+                       <amexio-button [label]="'SELECT PLAN'" [type]="'theme-color'" [size]="'default'">
+                            </amexio-button>
+                </amexio-column>
+                <amexio-column size="8" [fit]="true" style="">
+                    <amexio-label
+                        [size]="'medium-bold'">
+                            General usage charges
+                    </amexio-label><br>
+                    <span>Usage Rate(at all times)</span>
+                    <hr>
+                    <amexio-row>
+                       <amexio-column size="2" [fit]="true" *ngFor="let usagecharges of upSell.generalUasageCharges"> 
+                    <a class="fa fa-circle"
+                       [ngClass]="{'first': usagecharges.slabName== 'First', 'next': usagecharges.slabName== 'Next' , 'remaining': usagecharges.slabName == 'Remaining'}"></a>
+                    &nbsp;{{usagecharges.slabName}}
+                  <br>
+                           {{usagecharges.slab}}<br>
+                           {{usagecharges.slabUnit}}
+                       </amexio-column>   
+                    </amexio-row>
+                </amexio-column>
+            </amexio-row>
+        </amexio-body>
+    </amexio-card>
+</ng-container>

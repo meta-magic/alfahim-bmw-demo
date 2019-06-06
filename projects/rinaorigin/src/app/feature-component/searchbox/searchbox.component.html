@@ -1,0 +1,20 @@
+<div class="inputgroup" #rootDiv>
+  <input
+    id="input"
+    role="combobox"
+    name="searchbox"
+    [(ngModel)]="searchId"
+    type="text" class="input-control"
+    (focus)="focusHandle($event)"
+    (blur)="blurHandle($event)"
+    [attr.placeholder]="'search'"/>
+  <span class="drodown-caret-down" (click)="iconHandle()" style="cursor: pointer">
+      <i class="fa fa-search"></i>
+      </span>
+  <span #dropdownitems  class="dropdown"  [ngStyle]="dropdownstyle">
+          <ul class="dropdown-list">
+            <li (mousedown)="liClickHandle(item)"  role="option"  class="list-items" *ngFor="let item of dropDownItemList">{{item.key}} <i style="float: right" [ngClass]="{'fa fa-check': item.selected}" aria-hidden="true"></i></li>
+          </ul>
+        </span>
+</div>
+<br>

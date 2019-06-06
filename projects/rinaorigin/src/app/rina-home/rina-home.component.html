@@ -1,0 +1,462 @@
+<amexio-spinner [show]="showLoader" [type]="'rectanglebounce'" [vertical-position]="'center'" [horizontal-position]="'center'" [color]="'yellow'">
+</amexio-spinner>
+<amexio-layout-grid [layout]="'rinahomepage'">
+    <amexio-grid-item [name]="'logoposition'">
+        <amexio-card [header]="false" [footer]="false">
+            <amexio-body>
+                <company-logo></company-logo>
+            </amexio-body>
+        </amexio-card>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'topslot2'">
+        <span class="custdetail">
+          <rina-property-grid [key-value-data]="customerKeyValuedata" [has-badge]="true" [badge]="badge"></rina-property-grid>
+
+        </span>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'topslot3'">
+       <span class="custdetail">
+        <rina-property-grid [key-value-data]="eleSummaryKeyValueData"
+                            (onPropertySelect)="onPropertySelectHandle($event)"
+                            [has-radio-title]="true" [radio-title-data]="electricityTitleData">
+        </rina-property-grid>
+       </span>
+    </amexio-grid-item>
+
+    <amexio-grid-item [name]="'topslot4'">
+      <span class="custdetail">
+        <rina-property-grid  [has-radio-title]="true"
+                             [has-radio]="hasNgas"
+                             [radio-title-data]="gasTitleData"
+                             (onPropertySelect)="onPropertySelectHandle($event)"
+                             [key-value-data]="ngasSummaryKeyValueData"></rina-property-grid>
+      </span>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'guages'">
+        <amexio-card [header]="false" [footer]="false">
+            <amexio-body>
+                <amexio-layout-columns [fit]="true" [orientation]="'horizontal'" [border]="false">
+                    <amexio-layout-item [fit]="true" *ngFor="let alignment of ['center']">
+                        <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="alignment">
+                            <amexio-layout-item>
+                                <amexio-dashboard-gauge  [data]="gaugeChartData" [red-color-from]="90" [red-color-to]="100" [yellow-color-from]="75" [yellow-color-to]="90" [scale-value]="5">
+                                </amexio-dashboard-gauge>
+                                <amexio-row>
+                                    <amexio-column size="6">
+                                        <amexio-label [size]="small">
+                                            CSAT 70/100%
+                                        </amexio-label>
+                                    </amexio-column>
+                                    <amexio-column size="6">
+                                        <amexio-label [size]="small">
+                                            AHT SLA 200
+                                        </amexio-label>
+                                    </amexio-column>
+                                </amexio-row>
+                            </amexio-layout-item>
+                        </amexio-layout-columns>
+                    </amexio-layout-item>
+                </amexio-layout-columns>
+
+            </amexio-body>
+        </amexio-card>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'rinasidemenu'">
+        <service-list-component [service-list]="serviceList" (errorFound)="handleError()" (search)="getSearchObject($event)" (serviceTypeClick)="serviceTypeClickHandle($event)"></service-list-component>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'rinasidecenter'">
+        <amexio-layout-columns style="background-color: white" [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="'space-between'">
+            <amexio-layout-item [padding]="false" [fit]="true">
+                <amexio-tab-view #tab [divide-header-equally]="true" [closable]="false" [body-height]="40" >
+                </amexio-tab-view>
+            </amexio-layout-item>
+            <amexio-layout-item style="background-color: #E8E8E8" [padding]="false">
+              <amexio-layout-columns style="height: unset;"  [orientation]="'vertical'" [border]="false" [alignment]="'start'">
+                <amexio-layout-item [padding]="'0px'">
+                  <amexio-layout-columns [orientation]="'horizontal'" [border]="false" [alignment]="'start'">
+                    <amexio-layout-item [fit]="true">
+                      <div class="amexio-checkboxgroup-style">
+                        <amexio-checkbox-group [data-reader]="'data'" [display-field]="'serviceType'" [value-field]="'serviceType'" [horizontal]="true" [http-method]="'get'" [http-url]="'assets/serviceType.json'">
+                        </amexio-checkbox-group>
+                      </div>
+                    </amexio-layout-item>
+                  </amexio-layout-columns>
+
+                </amexio-layout-item>
+
+                <amexio-layout-item [padding]="'0px'">
+                  <amexio-layout-columns  [orientation]="'horizontal'" [border]="false" [alignment]="'space-between'">
+                    <amexio-layout-item [fit]="true">
+                      <amexio-text-input place-holder="Call Remark" [allow-blank]="true" has-label="false">
+                      </amexio-text-input>
+                    </amexio-layout-item>
+                    <amexio-layout-item>
+                      <amexio-button [size]="'medium'" [label]="'Submit'" [type]="'theme-color'" [tooltip]="'submit'">
+                      </amexio-button>
+                    </amexio-layout-item>
+                  </amexio-layout-columns>
+
+                </amexio-layout-item>
+
+
+              </amexio-layout-columns>
+            </amexio-layout-item>
+        </amexio-layout-columns>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'rinasidesearch'">
+        <span class="servicelist">
+            <amexio-card [header]="false" [footer]="false">
+                <amexio-body>
+                    <amexio-dropdown [place-holder]="'Select Script'" [display-field]="'scriptName'" [data-reader]="'data'"
+                        [value-field]="'scriptUrl'" [http-method]="'get'" [http-url]="'assets/script.json'"
+                        [enable-sort]="true" [sort]="'asc'">
+                    </amexio-dropdown>
+                       <p>
+                    <b>Fee changes affecting customers on market contracts</b><br/><br/>
+                     {{infoMsg}}
+                  </p>
+                </amexio-body>
+            </amexio-card>
+        </span>
+    </amexio-grid-item>
+</amexio-layout-grid>
+<amexio-dialogue [(show)]="warningdialogue" [material-design]="true" [message]="warningMsg" [title]="'Error'" [message-type]="'error'" [type]="'alert'">
+</amexio-dialogue>
+
+
+
+<amexio-notification
+  [background-color]="'orange'"
+  [foreground-color]="'black'"
+  [data]="notificationData"
+  [vertical-position]="'bottom'"
+  [horizontal-position]="'right'"
+  [close-on-escape] ="true">
+  <ng-template   #amexioNotificationTemp let-data="data" >
+    <amexio-box padding="true" [box-width]="'225px'">
+      <amexio-label size="medium-bold">Additional Information</amexio-label><br/>
+      <amexio-label>{{data}}</amexio-label><br/>
+      <br/>
+      <amexio-button [label]="'more info'"
+                     [type]="'white'"
+                     [size]="'small'"
+                     (onClick)="onClickHandle($event)"
+                     [tooltip]="'more info'">
+      </amexio-button>
+    </amexio-box>
+  </ng-template>
+
+
+</amexio-notification>
+
+
+<!-- OPEN SERVICE REQUEST-->
+
+<amexio-window
+  [(show)]="showOpenServiceRequest"
+  [close-on-escape]="true"
+  [material-design]="true"
+  [width]="'70%'">
+  <amexio-header>
+    <b>{{'Open Service Requests' | uppercase}}</b>
+  </amexio-header>
+  <amexio-body>
+    <ng-container *ngIf="customerOrigin.openServiceRequest">
+      <open-service-request [is-interaction-history]="false" [service-request-object]="[customerOrigin.openServiceRequest]"></open-service-request>
+    </ng-container>
+  </amexio-body>
+</amexio-window>
+
+
+
+<!-- CHART WINDOW-->
+
+<amexio-window
+  [(show)]="showWindow"
+  [close-on-escape]="true"
+  [material-design]="true"
+  [width]="'70%'">
+  <amexio-header>
+    &nbsp;
+  </amexio-header>
+  <amexio-body>
+        <ng-container *ngIf="showWindow && serviceMetadataStructure.analytics">
+          <amexio-d3-chart-multiseries
+            [title]="'Last Year Usage VS Projection'"
+            [data]="serviceMetadataStructure.analytics.comparative"
+            [label]="true"
+            [label-color]="'#7B0099'">
+          </amexio-d3-chart-multiseries>
+        </ng-container>
+
+  </amexio-body>
+</amexio-window>
+
+<!-- WAVERS INFO-->
+
+<amexio-window
+  [(show)]="shoWWaverWindow"
+  [close-on-escape]="true"
+  [material-design]="true"
+  [footer]="true"
+  [width]="'30%'">
+  <amexio-header>
+    Waiver Workflow
+  </amexio-header>
+  <amexio-body>
+    <ng-container *ngIf="shoWWaverWindow">
+
+      <table>
+        <tr>
+          <td><b>Due Amount</b></td>
+          <td>{{customerOrigin.electricity.unbilledAmount}}</td>
+        </tr>
+        <tr>
+          <td><b>Due Date</b></td>
+          <td>{{customerOrigin.electricity.dueDate}}</td>
+        </tr>
+        <tr>
+          <td><b>Amount After Due Date</b></td>
+          <td>{{customerOrigin.electricity.dueAmountAfterDueDate}}</td>
+        </tr>
+      </table><br>
+      <amexio-checkbox  [field-label]="'Waiver additional charges'">
+      </amexio-checkbox>
+
+      <amexio-textarea-input [enable-popover]="false"
+                             [allow-blank]="true"
+                             [icon-feedback]="false"
+                             [rows]="'3'"
+                             [columns]="'2'">
+      </amexio-textarea-input>
+    </ng-container>
+
+  </amexio-body>
+  <amexio-action>
+    <amexio-button [label]="'Submit'"
+                   [type]="'theme-color'"
+                   (onClick)="onSubmitHandle($event)">
+    </amexio-button>
+  </amexio-action>
+</amexio-window>
+
+
+
+
+
+
+
+
+<!--<amexio-window
+  [(show)]="showChangeAddressWindow"
+  [close-on-escape]="true"
+  [material-design]="true"
+  [footer]="true"
+  [width]="'60%'">
+  <amexio-header>
+    Change Address
+  </amexio-header>
+  <amexio-body>
+    <ng-container *ngIf="showChangeAddressWindow">
+
+      <amexio-row>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="Address Line 1"
+                             [(ngModel)]="addressModel.addressLine1"
+                             place-holder="Enter Address Line 1"
+                             [disabled]="true"
+                             icon-feedback="false">
+          </amexio-text-input>
+        </amexio-column>
+        <amexio-column [size]="2" style="text-align: center">
+          <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+        </amexio-column>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="Address Line 1"
+                             [(ngModel)]="addressModel.addressLine1"
+                             place-holder="Enter Address Line 1"
+                             [disabled]="false"
+                             icon-feedback="true">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="Address Line 2"
+                             [(ngModel)]="addressModel.addressLine2"
+                             place-holder="Enter Address Line 2"
+                             [disabled]="true"
+                             icon-feedback="false">
+          </amexio-text-input>
+        </amexio-column>
+        <amexio-column [size]="2" style="text-align: center">
+          <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+        </amexio-column>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="Address Line 2"
+                             [(ngModel)]="addressModel.addressLine2"
+                             place-holder="Enter Address Line 2"
+                             [disabled]="false"
+                             icon-feedback="true">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="City"
+                             [(ngModel)]="addressModel.city"
+                             place-holder="Enter City"
+                             [disabled]="true"
+                             icon-feedback="false">
+          </amexio-text-input>
+        </amexio-column>
+        <amexio-column [size]="2" style="text-align: center">
+          <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+        </amexio-column>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="City"
+                             [(ngModel)]="addressModel.city"
+                             place-holder="Enter city"
+                             [disabled]="false"
+                             icon-feedback="true">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="State"
+                             [(ngModel)]="addressModel.state"
+                             place-holder="Enter State"
+                             [disabled]="true"
+                             icon-feedback="false">
+          </amexio-text-input>
+        </amexio-column>
+        <amexio-column [size]="2" style="text-align: center">
+          <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+        </amexio-column>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="State"
+                             [(ngModel)]="addressModel.state"
+                             place-holder="Enter State"
+                             [disabled]="false"
+                             icon-feedback="true">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="Postcode"
+                             [(ngModel)]="addressModel.postCode"
+                             place-holder="Enter Postcode"
+                             [disabled]="true"
+                             icon-feedback="false">
+          </amexio-text-input>
+        </amexio-column>
+        <amexio-column [size]="2" style="text-align: center">
+          <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+        </amexio-column>
+        <amexio-column [size]="5">
+          <amexio-text-input field-label="Postcode"
+                             [(ngModel)]="addressModel.postCode"
+                             place-holder="Enter Postcode"
+                             [disabled]="false"
+                             icon-feedback="true">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+    </ng-container>
+
+  </amexio-body>
+  <amexio-action>
+    <amexio-button [label]="'Cancel'"
+                   [type]="'theme-backgroundcolor'"
+                   (onClick)="onChangeAddressCancelHandle()">
+    </amexio-button>
+    <amexio-button [label]="'Submit'"
+                   [type]="'theme-color'"
+                   (onClick)="onChangeAddressSubmitHandle($event)">
+    </amexio-button>
+  </amexio-action>
+</amexio-window>-->
+
+
+
+
+
+
+
+
+<amexio-notification
+  [background-color]="'orange'"
+  [foreground-color]="'black'"
+  [data]="operationStatusNotification"
+  [vertical-position]="'top'"
+  [horizontal-position]="'center'"
+  [close-on-escape] ="true"
+  [auto-dismiss-msg]="false">
+</amexio-notification>
+
+
+
+
+
+
+
+
+
+<div *ngIf="windowEnable" class="alfahim-root-window">
+  <div> &nbsp; </div>
+  <div class="alfahim-root-window-inner">
+    <div class="alfahim-root-window-content">
+
+      <!-- CHANGE ENERY PLAN-->
+
+        <energy-plan *ngIf="showChangeEnergyPlanWindow"
+                     (onClose)="onCancelHandle()"
+                     (onSelectPlan)="getSelectedPlanData($event)"
+                     [(show)]="showChangeEnergyPlanWindow"
+                     [data]="energyPlanData">
+        </energy-plan>
+
+      <update-information *ngIf="showUpdateInformationWindow"
+                          [data]="updateInformation"
+                          (onCancel)="onCancelHandle()"
+                          (onSubmit)="onUpdateInfoSubmitHandle()">
+      </update-information>
+
+      <change-address *ngIf="showChangeAddressWindow"
+                      [data]="addressModel"
+                      (onCancel)="onCancelHandle()"
+                      (onSubmit)="onChangeAddressSubmitHandle()">
+      </change-address>
+    </div>
+  </div>
+</div>
+
+
+
+<amexio-notification
+  [background-color]="'orange'"
+  [foreground-color]="'black'"
+  [data]="selectedPlanNotification"
+  [vertical-position]="'top'"
+  [horizontal-position]="'center'"
+  [close-on-escape] ="true"
+  [auto-dismiss-msg]="false">
+  <ng-template #amexioNotificationTemp let-data="data" >
+    <amexio-label>Electricity Plan changed from ORIGIN SAVER to <b>{{data.name}}</b> (Plan ID: <b>{{data.planId}}</b>)
+    </amexio-label><br/><br/>
+    <amexio-label>Plan start date: {{data.startDate}}</amexio-label><br/><br/>
+    <amexio-label>Plan start date: {{data.endDate}}</amexio-label><br/>
+
+  </ng-template>
+</amexio-notification>

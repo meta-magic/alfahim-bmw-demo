@@ -1,0 +1,121 @@
+{
+  "currentPlan": {
+    "plan": "Origin Saver ending 22 Feb 19",
+    "benefits": [
+      "Pay-On-Time Usage Discount (10%)"
+    ]
+  },
+  "billSummary": {
+    "period": "11 Aug 18 - 9 Nov 18 (91 days)",
+    "rate": "Domestic General",
+    "meterDetails": [
+      {
+        "meterNo": "EC508942",
+        "previousRead": "2655 (A)",
+        "currentRead": "2863 (A)",
+        "volumeX": "208",
+        "correctionFactorX": "1.0281",
+        "heatingValue": "37.8",
+        "usageMJ": "8083.33",
+        "bold": false
+      },
+      {
+        "heatingValue": "Total MJ",
+        "usageMJ": "8083.33",
+        "bold": true
+      }
+    ],
+    "billDetails": [
+      {
+        "title": "Usage",
+        "billDays": "",
+        "usage": "",
+        "charge": "",
+        "amount": "",
+        "bold": false
+      },
+      {
+        "title": "First 0-1885",
+        "billDays": "91",
+        "usage": "1855",
+        "charge": "3.59 c/MJ",
+        "amount": "$67.67",
+        "bold": false
+      },
+      {
+        "title": "Next 1886-3740",
+        "billDays": "91",
+        "usage": "1855",
+        "charge": "2.42 c/MJ",
+        "amount": "$44.89 ",
+        "bold": false
+      },
+      {
+        "title": "Next 3741-249814",
+        "billDays": "91",
+        "usage": "4343.33",
+        "charge": "2.33 c/MJ",
+        "amount": "$101.20",
+        "bold": false
+      },
+      {
+        "title": "Supply Charge",
+        "billDays": "91",
+        "usage": "",
+        "charge": "60.90 c/Day",
+        "amount": "$55.42",
+        "bold": false
+      },
+      {
+        "title": "Total (excl GST)",
+        "billDays": "",
+        "usage": "",
+        "charge": "",
+        "amount": "$269.18 ",
+        "bold": true
+      }
+    ]
+  },
+  "interactionHistory": {},
+  "usageReports": [
+    {
+      "avgCostPerDay": "$3.25",
+      "avgDailyUsage": "88.83 MJ",
+      "sameTimeLastYear": "72.94 MJ",
+      "totalBill": "0.5 tonnes",
+      "samelastYear": "0.4 tonnes",
+      "savedwithGreenPower": "NA",
+      "summary": {
+        "usagelastYear": "21.79%",
+        "thisYear": "88.83 MJ",
+        "lastYear": "72.94 MJ"
+      },
+      "breakdown": [
+        [
+          "Date",
+          "Usage(MJ)"
+        ],
+        [
+          "Nov 17",
+          69.9
+        ],
+        [
+          "Feb 18",
+          45.7
+        ],
+        [
+          "May 18",
+          58.2
+        ],
+        [
+          "Aug 18",
+          115.8
+        ],
+        [
+          "Nov 18",
+          85.2
+        ]
+      ]
+    }
+  ]
+}

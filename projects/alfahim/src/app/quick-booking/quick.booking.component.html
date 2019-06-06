@@ -1,0 +1,48 @@
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      QUICK BOOKING
+    </amexio-label>
+  </amexio-header-ce>
+  <amexio-body-ce [align]="'start'">
+    <amexio-layout-columns class="layout-width" [orientation]="'vertical'" [fit]="true" [alignment]="'start'" [border]="false">
+      <amexio-layout-item>
+        <amexio-text-input field-label="Emirates ID" name="eid" [(ngModel)]="emiratesId" place-holder="Emirates ID" [allow-blank]="true" [disabled]="emiratesIdDisabled" (change)="changeHandle('eid')">
+        </amexio-text-input>
+      </amexio-layout-item>
+
+      <amexio-layout-item>
+        <amexio-text-input field-label="Registered Mobile Number" name="rmn" [(ngModel)]="regMobNumber" place-holder="Registered Mobile Number" [allow-blank]="true" [disabled]="regMobNumberDisabled" (change)="changeHandle('rmn')">
+        </amexio-text-input>
+      </amexio-layout-item>
+      <amexio-text-input field-label="Registered Number (License Plate)" name="rn" [(ngModel)]="regNumber" [disabled]="regNumberDisabled" place-holder="Registration Number ( License Plate ) " [allow-blank]="true" (change)="changeHandle('rn')">
+      </amexio-text-input>
+      <amexio-layout-item>
+
+      </amexio-layout-item>
+    </amexio-layout-columns>
+  </amexio-body-ce>
+
+  <amexio-action-ce [align]="'space-between'" [border-top]="true">
+    <amexio-button [icon]="'fa fa-user-plus'" [label]="'NEW USER'" [block]="true" [type]="'theme-color'" [size]="'large'"
+                   [tooltip]="'New Customer'" (onClick)="onClickNewCustomer($event)">
+    </amexio-button>
+
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Next'" [type]="'theme-color'" [disabled]="validUi()" [tooltip]="'next'" [size]="'large'" (onClick)="onClickHandle($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+
+
+</amexio-card-ce>
+
+<amexio-dialogue [(show)]="warningdialogue" [material-design]="true" [message]="warningMsg" [title]="'Error'" [message-type]="'error'" [type]="'alert'">
+</amexio-dialogue>

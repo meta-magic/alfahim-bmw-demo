@@ -1,0 +1,163 @@
+<!-- UPDATE INFO-->
+
+<amexio-card-ce >
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      {{ 'Change Address' | uppercase}}
+    </amexio-label>
+  </amexio-header-ce>
+  <amexio-body-ce [align]="'start'">
+
+    <amexio-row>
+      <amexio-column [size]="6">
+        <amexio-text-input field-label="Address Line 1"
+                           name="addressLine1"
+                           [(ngModel)]="readonlyAddressModel.addressLine1"
+                           [disabled]="true"
+                           place-holder="Enter Address Line 1">
+        </amexio-text-input>
+
+        <amexio-text-input field-label="Address Line 2"
+                           [(ngModel)]="readonlyAddressModel.addressLine2"
+                           [disabled]="true"
+                           name="addressLine2"
+                           place-holder="Enter Address Line 2">
+        </amexio-text-input>
+
+        <amexio-text-input field-label="City"
+                           [(ngModel)]="readonlyAddressModel.city"
+                           [disabled]="true"
+                           name="city"
+                           place-holder="Enter City">
+        </amexio-text-input>
+
+        <amexio-text-input field-label="State"
+                           [(ngModel)]="readonlyAddressModel.state"
+                           [disabled]="true"
+                           name="state"
+                           place-holder="Enter State">
+        </amexio-text-input>
+
+        <amexio-text-input field-label="Postcode"
+                           [(ngModel)]="readonlyAddressModel.postCode"
+                           [disabled]="true"
+                           name="postCode"
+                           place-holder="Enter Postcode">
+        </amexio-text-input>
+      </amexio-column>
+      <amexio-column [size]="6">
+        <form #addrForm="ngForm">
+          <amexio-text-input field-label="Address Line 1"
+                             name="addressLine1"
+                             [(ngModel)]="data.addressLine1"
+                             place-holder="Enter Address Line 1">
+          </amexio-text-input>
+
+          <amexio-text-input field-label="Address Line 2"
+                             [(ngModel)]="data.addressLine2"
+                             name="addressLine2"
+                             place-holder="Enter Address Line 2">
+          </amexio-text-input>
+
+          <amexio-text-input field-label="City"
+                             [(ngModel)]="data.city"
+                             name="city"
+                             place-holder="Enter City">
+          </amexio-text-input>
+
+          <amexio-text-input field-label="State"
+                             [(ngModel)]="data.state"
+                             name="state"
+                             place-holder="Enter State">
+          </amexio-text-input>
+
+          <amexio-text-input field-label="Postcode"
+                             [(ngModel)]="data.postCode"
+                             name="postCode"
+                             place-holder="Enter Postcode">
+          </amexio-text-input>
+        </form>
+      </amexio-column>
+    </amexio-row>
+
+
+<!--    <ng-container >
+      <form #addrForm="ngForm">
+      <amexio-row>
+        <amexio-column [size]="12">
+          <amexio-text-input field-label="Address Line 1"
+                             name="addressLine1"
+                             [(ngModel)]="data.addressLine1"
+                             place-holder="Enter Address Line 1">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="12">
+          <amexio-text-input field-label="Address Line 2"
+                             [(ngModel)]="data.addressLine2"
+                             name="addressLine2"
+                             place-holder="Enter Address Line 2">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+      <amexio-row>
+        <amexio-column [size]="12">
+          <amexio-text-input field-label="City"
+                             [(ngModel)]="data.city"
+                             name="city"
+                             place-holder="Enter City">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="12">
+          <amexio-text-input field-label="State"
+                             [(ngModel)]="data.state"
+                             name="state"
+                             place-holder="Enter State">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+
+
+      <amexio-row>
+        <amexio-column [size]="12">
+          <amexio-text-input field-label="Postcode"
+                             [(ngModel)]="data.postCode"
+                             name="postCode"
+                             place-holder="Enter Postcode">
+          </amexio-text-input>
+        </amexio-column>
+      </amexio-row>
+      </form>
+
+    </ng-container>-->
+
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'"
+                       [type]="'theme-backgroundcolor'"
+                       [size]="'large'"
+                       (onClick)="onChangeAddressCancelHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Submit'"
+                       [type]="'theme-color'"
+                       [size]="'large'"
+                       [disabled]="!addrForm.valid"
+                       (onClick)="onChangeAddressSubmitHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+

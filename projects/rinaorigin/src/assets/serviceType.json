@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data":[
+    {
+      "serviceType": "Billing Dispute"
+    },
+    {
+      "serviceType": "Change in address"
+    },
+    {
+      "serviceType": "Loyalty"
+    },
+    {
+      "serviceType": "ACW 4"
+    },
+    {
+      "serviceType": "ACW 5"
+    }
+  ]
+}

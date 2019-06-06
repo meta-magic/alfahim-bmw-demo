@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "message": "data retrieved successfully",
+  "data": [
+    {
+     "serviceName": "SERVICE BOOKING",
+      "disabled": true
+    },
+    {
+      "serviceName": "WORKFLOW",
+      "disabled": true
+    },
+    {
+      "serviceName": "WORKFLOW",
+      "disabled": true
+    },
+    {
+      "serviceName": "WORKFLOW",
+      "disabled": true
+    },
+    {
+      "serviceName": "WORKFLOW",
+      "disabled": true
+    },
+    {
+      "serviceName": "WORKFLOW",
+      "disabled": true
+    }
+  ]
+}

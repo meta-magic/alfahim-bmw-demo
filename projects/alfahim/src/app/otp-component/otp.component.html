@@ -1,0 +1,60 @@
+<amexio-spinner [show]="showLoader" [type]="'rectanglebounce'" [vertical-position]="'center'" [horizontal-position]="'center'" [color]="'yellow'">
+</amexio-spinner>
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      OTP has been send to your registered:
+    </amexio-label>
+  </amexio-header-ce>
+  <amexio-body-ce [align]="'start'">
+    <amexio-layout-columns class="layout-width" [orientation]="'vertical'" [fit]="true" [alignment]="'start'"
+                           [border]="false">
+      <amexio-layout-item>
+
+        <amexio-layout-item>
+          <amexio-checkbox [disabled]="true" [field-label]="'8********5'">
+          </amexio-checkbox>
+        </amexio-layout-item>
+        <amexio-layout-item>
+          <amexio-checkbox [disabled]="true" [ngModel]="hasEmailId"  [field-label]="maskedid">
+          </amexio-checkbox>
+        </amexio-layout-item>
+
+          <amexio-layout-item>
+            <div [formGroup]="otpFormsGroup">
+              <amexio-text-input name="otp" formControlName="otpValue" [(ngModel)]="otp" field-label="OTP" place-holder="enter otp" has-label="true">
+              </amexio-text-input>
+            </div>
+          </amexio-layout-item>
+
+        <amexio-layout-item ><br/>
+          <amexio-label size="medium" font-color="red">
+            {{errorMsg}}
+          </amexio-label><br/>
+        </amexio-layout-item>
+
+        <amexio-layout-item>
+          <amexio-button style="width:200px;" [disabled]="true" [label]="'Resend OTP'" [block]="true" [type]="'theme-color'" [tooltip]="'Resend OTP'">
+          </amexio-button>
+        </amexio-layout-item>
+
+      </amexio-layout-item>
+    </amexio-layout-columns>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel()">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" [type]="'theme-backgroundcolor'" [tooltip]="'Back'" [size]="'large'" (onClick)="onBackHandle()">
+        </amexio-button>
+        <amexio-button [label]="'Verify'" [disabled]="!otpFormsGroup.valid" [type]="'theme-color'" [tooltip]="'Proceed to preferred location'" [size]="'large'" (onClick)="onNextHandle()">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>
+

@@ -1,0 +1,36 @@
+
+
+<amexio-card-ce>
+  <amexio-header-ce>
+    <amexio-label size="medium-bold">
+      BEFORE YOU CONFIRM
+    </amexio-label>
+  </amexio-header-ce>
+  <rina-step-box [active-index]="6"></rina-step-box>
+
+  <amexio-body-ce [align]="'start'">
+    <amexio-label [size]="'medium'">We've got some iconic Lifestyle Accessories just for you!</amexio-label>
+    <amexio-layout-columns [fit]="false" [orientation]="'horizontal'" [border]="false" [alignment]="'start'">
+      <amexio-layout-item *ngFor="let accessiories of accessioriesData" style="min-width:24%;">
+        <content-card [image-url]="'https://demo.amexio.org/alfahim/'+accessiories.imageUrl" [description]="accessiories.description">
+          <amexio-button [label]="'SHOW ME'" [type]="'green'" [tooltip]="'show me'">
+          </amexio-button>
+        </content-card>
+      </amexio-layout-item>
+    </amexio-layout-columns>
+  </amexio-body-ce>
+  <amexio-action-ce [align]="'flex-end'" [border-top]="true">
+    <amexio-toolbar>
+      <amexio-toolbar-item position-right [seperator-position]="'right'">
+        <amexio-button [label]="'Cancel'" [type]="'theme-backgroundcolor'" [tooltip]="'cancel'" [size]="'large'" (onClick)="onCancel($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+      <amexio-toolbar-item position-right style="padding-left: 5px;">
+        <amexio-button [label]="'Back'" [type]="'theme-backgroundcolor'" [tooltip]="'Back'" [size]="'large'" (onClick)="onBackHandle($event)">
+        </amexio-button>
+        <amexio-button [label]="'SKIP'" [type]="'theme-color'" [tooltip]="'skip'" [size]="'large'" (onClick)="onClickHandle($event)">
+        </amexio-button>
+      </amexio-toolbar-item>
+    </amexio-toolbar>
+  </amexio-action-ce>
+</amexio-card-ce>

@@ -1,0 +1,20 @@
+<b>Period: {{billSummary.period}}</b><br>
+<label>Your rate: {{billSummary.rate}}</label>
+<amexio-datagrid [data]="billSummary.billDetails">
+  <amexio-data-table-column [width]="50" [data-index]="'title'" [data-type]="'string'" [hidden]="false" [text]="''">
+    <ng-template #amexioBodyTmpl let-column let-row="row">
+      <ng-container *ngIf="row.bold">
+        <b>{{row.title}}</b>
+      </ng-container>
+      <ng-container *ngIf="!row.bold">
+        <span>{{row.title}}</span>
+      </ng-container>
+    </ng-template>
+  </amexio-data-table-column>
+  <amexio-data-table-column  [data-index]="'usage'" [data-type]="'string'" [text]="'Usage(kwh)'">
+  </amexio-data-table-column>
+  <amexio-data-table-column  [data-index]="'charge'" [data-type]="'string'" [text]="'Charge'">
+  </amexio-data-table-column>
+  <amexio-data-table-column  [data-index]="'amount'" [data-type]="'string'" [text]="'Amount'">
+  </amexio-data-table-column>
+</amexio-datagrid>

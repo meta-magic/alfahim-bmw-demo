@@ -1,0 +1,79 @@
+<ng-container *ngIf="serviceRequestObject">
+  <amexio-datagrid [enable-column-fiter]="false" [data]="serviceRequestObject">
+    <amexio-data-table-column
+      [data-index]="'srNo'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'SR Number'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [sort]="false"
+      [data-index]="'ticketType'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'Ticket Type'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'openDate'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'SR Open Date'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'dueDate'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'Due Date'">
+    </amexio-data-table-column>
+
+    <amexio-data-table-column
+      [data-index]="'status'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'Status'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'priority'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'Priority'">
+    </amexio-data-table-column>
+
+
+    <amexio-data-table-column
+      [data-index]="'agentRemarks'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'Front Line Agent Remarks'">
+      <ng-template #amexioBodyTmpl let-column let-row="row">
+          <span [ngClass]="{'open-status':row.status =='Open', 'close-status': row.status == 'Closed'}" (click)="getFieldEngInfo(row)">{{row.agentRemarks}}</span>
+      </ng-template>
+    </amexio-data-table-column>
+    <amexio-data-table-column
+      [data-index]="'createdBy'"
+      [data-type]="'string'"
+      [hidden]="false"
+      [text]="'Created by User'">
+    </amexio-data-table-column>
+  </amexio-datagrid>
+  <br>
+
+  <table *ngIf="fieldEnggInfo">
+    <tr>
+      <td><b>Assigned Field Engineer</b></td>
+      <td>{{fieldEnggInfo.assignedFieldEngineer}}</td>
+    </tr>
+    <tr>
+      <td><b>Scheduled Visit Time</b></td>
+      <td>{{fieldEnggInfo.scheduleVistTime}}</td>
+    </tr>
+    <tr>
+      <td><b>Estimated Visit Time</b></td>
+      <td style="color: red">{{fieldEnggInfo.estimatedVistTime}}</td>
+    </tr>
+    <tr>
+      <td><b>Reason</b></td>
+      <td>{{fieldEnggInfo.reason}}</td>
+    </tr>
+  </table>
+</ng-container>

@@ -1,0 +1,248 @@
+<amexio-spinner [show]="showLoader" [type]="'rectanglebounce'" [vertical-position]="'center'" [horizontal-position]="'center'" [color]="'yellow'">
+</amexio-spinner>
+<amexio-layout-grid [layout]="'rinahomepage'">
+    <amexio-grid-item [name]="'logoposition'">
+        <amexio-card [header]="false" [footer]="false">
+            <amexio-body>
+                <company-logo></company-logo>
+            </amexio-body>
+        </amexio-card>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'topslot2'">
+        <span class="custdetail">
+          <rina-property-grid [key-value-data]="customerKeyValuedata" [has-image]="true" [image]="customerModel.profileImageUrl"></rina-property-grid>
+        </span>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'topslot3'">
+        <rina-property-grid [key-value-data]="vehicleKeyValuedata"></rina-property-grid>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'topslot4'">
+        <rina-property-grid [key-value-data]="serviceKeyValuedata"></rina-property-grid>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'guages'">
+        <amexio-card [header]="false" [footer]="false">
+            <amexio-body>
+                <amexio-layout-columns [fit]="true" [orientation]="'horizontal'" [border]="false">
+                    <amexio-layout-item [fit]="true" *ngFor="let alignment of ['center']">
+                        <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="alignment">
+                            <amexio-layout-item>
+                                <amexio-dashboard-gauge [height]="'100%'" [width]="'100%'" [data]="gaugeChartData" [red-color-from]="90" [red-color-to]="100" [yellow-color-from]="75" [yellow-color-to]="90" [scale-value]="5">
+                                </amexio-dashboard-gauge>
+                                <amexio-row>
+                                    <amexio-column size="6">
+                                        <amexio-label [size]="small">
+                                            CSAT 70/100%
+                                        </amexio-label>
+                                    </amexio-column>
+                                    <amexio-column size="6">
+                                        <amexio-label [size]="small">
+                                            AHT SLA 200
+                                        </amexio-label>
+                                    </amexio-column>
+                                </amexio-row>
+                            </amexio-layout-item>
+                        </amexio-layout-columns>
+                    </amexio-layout-item>
+                </amexio-layout-columns>
+
+            </amexio-body>
+        </amexio-card>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'rinasidemenu'">
+        <service-list-component [service-list]="serviceList" (errorFound)="handleError()" (search)="getSearchObject($event)" (serviceTypeClick)="serviceTypeClickHandle($event)"></service-list-component>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'rinasidecenter'">
+        <amexio-layout-columns style="background-color: white" [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="'space-between'">
+            <amexio-layout-item [padding]="false" [fit]="true">
+                <amexio-tab-view #tab [divide-header-equally]=true [closable]="false" [body-height]="46">
+                    <amexio-tab title="VEHICLE DETAILS" [active]="true" [amexio-color]="'red'">
+                        <ng-container *ngIf="customerModel.vehicles">
+                            <vehicle-details (selectVehicle)="getSelectedVehicle($event)" [vehicle-details]="customerModel.vehicles"></vehicle-details>
+                        </ng-container>
+                    </amexio-tab>
+                    <amexio-tab title="BOOKING DETAILS" [amexio-color]="'green'">
+                        <amexio-datagrid [http-method]="'get'" [http-url]="'assets/bookingdata.json'" [data-reader]="'data'" [page-size]="10">
+
+                            <amexio-data-table-column [data-index]="'bookingId'" [data-type]="'string'" [text]="'Booking Id'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [sort]="false" [data-index]="'bookingDate'" [data-type]="'string'" [text]="'Booking Date'"></amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'name'" [data-type]="'string'" [hidden]="false" [text]="'Name'">
+
+                            </amexio-data-table-column>
+                        </amexio-datagrid>
+                    </amexio-tab>
+                    <amexio-tab title="SERVICE HISTORY" [amexio-color]="'black'">
+                        <amexio-datagrid [http-method]="'get'" [http-url]="'assets/servicedata.json'" [data-reader]="'data'" [page-size]="10">
+                            <amexio-data-table-column [width]="8" [data-index]="'code'" [data-type]="'string'" [text]="'Code'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [sort]="false" [data-index]="'date'" [data-type]="'string'" [text]="'Date'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'mileage'" [data-type]="'string'" [hidden]="false" [text]="'Mileage'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [width]="18" [data-index]="'details'" [data-type]="'string'" [hidden]="false" [text]="'Details'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'wip'" [data-type]="'string'" [hidden]="false" [text]="'WIP'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'account'" [data-type]="'string'" [hidden]="false" [text]="'Account'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'value'" [data-type]="'string'" [hidden]="false" [text]="'Value'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'invoice'" [data-type]="'string'" [hidden]="false" [text]="'Invoice'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'jobNo'" [data-type]="'string'" [hidden]="false" [text]="'Job No'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [width]="9" [data-index]="'branch'" [data-type]="'string'" [hidden]="false" [text]="'Branch'">
+                            </amexio-data-table-column>
+                        </amexio-datagrid>
+                        <amexio-row>
+                            <amexio-column size="6">
+                                <rina-property-grid [key-value-data]="serviceHistoryData1"></rina-property-grid>
+
+                            </amexio-column>
+                            <amexio-column size="6">
+                                <rina-property-grid [key-value-data]="serviceHistoryData2"></rina-property-grid>
+                            </amexio-column>
+                        </amexio-row>
+                    </amexio-tab>
+                    <amexio-tab title="INTERACTION HISTORY" [amexio-color]="'red'">
+                        <amexio-datagrid [http-method]="'get'" [http-url]="'assets/interaction.json'" [data-reader]="'data'" [page-size]="10">
+
+                            <amexio-data-table-column [data-index]="'interactionDate'" [data-type]="'string'" [text]="'Interaction Date'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [sort]="false" [data-index]="'name'" [data-type]="'string'" [text]="'Name'"></amexio-data-table-column>
+                        </amexio-datagrid>
+                    </amexio-tab>
+                    <amexio-tab title="RIGHT SELL" [amexio-color]="'blue'">
+                        <amexio-datagrid [http-method]="'get'" [http-url]="'assets/dummygrid.json'" [data-reader]="'data'" [page-size]="10">
+
+                            <amexio-data-table-column [data-index]="'awaitingDetails'" [data-type]="'string'" [text]="'Awaiting Details'">
+                            </amexio-data-table-column>
+                            <amexio-data-table-column [sort]="false" [data-index]="'awaitingDetails'" [data-type]="'string'" [text]="'Awaiting Details'"></amexio-data-table-column>
+                            <amexio-data-table-column [data-index]="'awaitingDetails'" [data-type]="'string'" [hidden]="false" [text]="'Awaiting Details'">
+
+                            </amexio-data-table-column>
+                        </amexio-datagrid>
+                    </amexio-tab>
+                </amexio-tab-view>
+
+            </amexio-layout-item>
+            <amexio-layout-item style="background-color: #E8E8E8" [padding]="false">
+                <amexio-layout-columns [fit]="true" [orientation]="'horizontal'" [border]="false" [alignment]="'start'">
+                    <amexio-layout-item [fit]="true">
+                        <div class="amexio-checkboxgroup-style">
+                            <amexio-checkbox-group [data-reader]="'data'" [display-field]="'serviceType'" [value-field]="'serviceType'" [horizontal]="true" [http-method]="'get'" [http-url]="'assets/serviceType.json'">
+                            </amexio-checkbox-group>
+                        </div>
+                    </amexio-layout-item>
+                </amexio-layout-columns>
+
+                <amexio-layout-columns [fit]="true" [orientation]="'horizontal'" [border]="false" [alignment]="'space-between'">
+                    <amexio-layout-item [fit]="true">
+                        <amexio-text-input place-holder="Call Remark" [allow-blank]="true" has-label="false">
+                        </amexio-text-input>
+                    </amexio-layout-item>
+                    <amexio-layout-item>
+                        <amexio-button [size]="'medium'" [label]="'Submit'" [type]="'theme-color'" [tooltip]="'submit'">
+                        </amexio-button>
+                    </amexio-layout-item>
+                </amexio-layout-columns>
+            </amexio-layout-item>
+        </amexio-layout-columns>
+    </amexio-grid-item>
+    <amexio-grid-item [name]="'rinasidesearch'">
+        <span class="servicelist">
+            <amexio-card [header]="false" [footer]="false">
+                <amexio-body>
+                    <amexio-dropdown [place-holder]="'Select Script'" [display-field]="'scriptName'" [data-reader]="'data'"
+                        [value-field]="'scriptUrl'" [http-method]="'get'" [http-url]="'assets/script.json'"
+                        [enable-sort]="true" [sort]="'asc'">
+                    </amexio-dropdown>
+                </amexio-body>
+            </amexio-card>
+        </span>
+    </amexio-grid-item>
+</amexio-layout-grid>
+<amexio-dialogue [(show)]="warningdialogue" [material-design]="true" [message]="warningMsg" [title]="'Error'" [message-type]="'error'" [type]="'alert'">
+</amexio-dialogue>
+
+
+<!-- WINDOW -->
+
+<!--<amexio-window class="serviceconfirmation servicelist"  [(show)]="windowEnable" type="window" [header]="false" [footer]="false" [closable]="false">
+    <amexio-body>
+        <br>
+        <amexio-row *ngIf="(currentstep > 2)">
+            <amexio-column size="1"></amexio-column>
+            <amexio-column size="10">
+                <amexio-steps [icon]="true">
+                    <amexio-step-block [label]="'Location'" [active]="(currentstep === 4)" [icon]="'fa fa-map-marker fa-2x'">
+                    </amexio-step-block>
+                    <amexio-step-block [label]="'Service Type'" [active]="(currentstep === 5)" [icon]="'fa fa-cubes fa-2x'">
+                    </amexio-step-block>
+                    <amexio-step-block [label]="'sale'" [active]="(currentstep === 6)" [icon]="'fa fa-superpowers fa-2x'">
+                    </amexio-step-block>
+                    <amexio-step-block [label]="'Confirm'" [active]="(currentstep === 7)" [icon]="'fa fa-check-circle fa-2x'">
+                    </amexio-step-block>
+                    <amexio-step-block [label]="'Info'" [active]="(currentstep === 8)" [icon]="'fa fa-info fa-2x'">
+                    </amexio-step-block>
+                </amexio-steps>
+            </amexio-column>
+            <amexio-column size="1"></amexio-column>
+        </amexio-row>
+
+        <customer-vehicle-list *ngIf="(currentstep === 2)" [customer-profile]="customerModel" (onBack)="vehicleListBack($event)" (onClose)="vehicleListBack($event)" (onVehicleListNext)="onVehicleListHandle($event)">
+        </customer-vehicle-list>
+
+
+        <preferred-location *ngIf="(currentstep === 4)" (onNext)="scheduleAppointment($event)" (onPrevious)="onPrevious($event)" (onClose)="vehicleListBack($event)" [service-model]="serviceModel">
+        </preferred-location>
+
+        <service-job-type *ngIf="(currentstep === 5)" (onNext)="onServiceTypeNextHandle($event)" (onBack)="onServiceTypeBackHandle($event)" (onClose)="onCloseClick($event)"></service-job-type>
+
+        <before-confirm *ngIf="(currentstep === 6)" (onClose)="vehicleListBack($event)" (onBeforeBack)="onBeforeBackHandle($event)" (onBeforeConfirmClick)="onBeforeConfirmClickHandle($event)">
+        </before-confirm>
+
+        <service-confirmation *ngIf="(currentstep === 7)" [service-model]="serviceModel" (onClose)="vehicleListBack($event)" (onPrevious)="onServiceConfirmPrevious($event)" (onConfirm)="onAppointmentConfirm($event)">
+        </service-confirmation>
+
+        <appointment-confirmation *ngIf="(currentstep === 8)" [appointment-msg]="appointmentMsg" (onConfirm)="onCloseClick()">
+        </appointment-confirmation>
+    </amexio-body>
+</amexio-window>-->
+
+
+<!-- NEW WINDOW -->
+
+
+<div *ngIf="windowEnable" class="alfahim-root-window">
+  <div> &nbsp; </div>
+  <div class="alfahim-root-window-inner">
+    <div class="alfahim-root-window-content">
+      <amexio-badge [absolute]="true" [background]="'black'" [color]="'white'" [top]="'0'" [right]="'0'">
+        <amexio-label style="padding:10px 20px;" size="medium">New Service Booking</amexio-label>
+      </amexio-badge>
+
+
+      <customer-vehicle-list *ngIf="(currentstep === 2)" [customer-profile]="customerModel" (onBack)="vehicleListBack($event)" (onClose)="vehicleListBack($event)" (onVehicleListNext)="onVehicleListHandle($event)">
+      </customer-vehicle-list>
+
+
+      <preferred-location *ngIf="(currentstep === 4)" (onNext)="scheduleAppointment($event)" (onPrevious)="onPrevious($event)" (onClose)="vehicleListBack($event)" [service-model]="serviceModel">
+      </preferred-location>
+
+      <service-job-type *ngIf="(currentstep === 5)" (onNext)="onServiceTypeNextHandle($event)" (onBack)="onServiceTypeBackHandle($event)" (onClose)="onCloseClick($event)"></service-job-type>
+
+      <before-confirm *ngIf="(currentstep === 6)" (onClose)="vehicleListBack($event)" (onBeforeBack)="onBeforeBackHandle($event)" (onBeforeConfirmClick)="onBeforeConfirmClickHandle($event)">
+      </before-confirm>
+
+      <service-confirmation *ngIf="(currentstep === 7)" [service-model]="serviceModel" (onClose)="vehicleListBack($event)" (onPrevious)="onServiceConfirmPrevious($event)" (onConfirm)="onAppointmentConfirm($event)">
+      </service-confirmation>
+
+      <appointment-confirmation *ngIf="(currentstep === 8)" [appointment-msg]="appointmentMsg" (onConfirm)="onCloseClick()">
+      </appointment-confirmation>
+    </div>
+  </div>
+  <div> &nbsp; </div>
+</div>
+
+

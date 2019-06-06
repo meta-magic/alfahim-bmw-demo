@@ -1,0 +1,151 @@
+<ng-container *ngIf="usageReports">
+  <ng-container *ngFor="let usageReport of usageReports">
+    <amexio-card [header]="true"
+                 [footer]="false">
+      <amexio-header>
+        YOUR USAGE SUMMARY
+      </amexio-header>
+      <amexio-body>
+        <amexio-row>
+          <amexio-column [size]="6">
+            <table style="width: 100%">
+              <tr>
+                <td>Average cost per day</td>
+                <td><b>{{usageReport.avgCostPerDay}}</b></td>
+              </tr>
+              <tr>
+                <td>Average daily usage</td>
+                <td><b>{{usageReport.avgDailyUsage}}</b></td>
+              </tr>
+              <tr>
+                <td>Same time last year</td>
+                <td><b>{{usageReport.sameTimeLastYear}}</b></td>
+              </tr>
+
+              <tr>
+                <td>  <p><b>Year indicative greenhouse gas emissions</b></p></td>
+              </tr>
+
+              <tr>
+                <td>Total for this bill</td>
+                <td><b>{{usageReport.totalBill}}</b></td>
+              </tr>
+              <tr>
+                <td>Same time last year</td>
+                <td><b>{{usageReport.samelastYear}}</b></td>
+              </tr>
+              <tr *ngIf="tabData.value == 'naturalgas'">
+                <td>Saved with Green Gas</td>
+                <td><b>{{usageReport.savedwithGreenPower}}</b></td>
+              </tr>
+              <tr *ngIf="tabData.value == 'electricity'">
+                <td>Saved with GreenPower</td>
+                <td><b>{{usageReport.savedwithGreenPower}}</b></td>
+              </tr>
+            </table><br>
+            <span>For more information on greenhouse gas emission visit</span><br>
+            <span><b>originenery.com.au</b></span>
+
+          </amexio-column>
+          <amexio-column [size]="6">
+            <amexio-label size="medium-bold">{{usageReport.summary.usagelastYear}} increase</amexio-label><br/>
+            <amexio-label>In usage since last year</amexio-label>
+            <amexio-layout-columns [alignment]="'center'" [orientation]="'horizontal'" [border]="false" [fit]="true">
+              <amexio-layout-item>
+                <amexio-layout-columns [alignment]="'end'" [orientation]="'vertical'" [border]="false" [fit]="true">
+                  <amexio-layout-item [padding]="'0px'">
+                    <i class="fa fa-home " style="font-size: 100px;color: #FFC90A" aria-hidden="true"></i>
+                  </amexio-layout-item>
+                  <amexio-layout-item [padding]="'0px'"  style="text-align: center">
+                    <span>{{usageReport.summary.lastYear}}</span><br/>
+                    <span><b>LAST YEAR</b></span>
+                  </amexio-layout-item>
+                </amexio-layout-columns>
+
+              </amexio-layout-item>
+              <amexio-layout-item>
+                <amexio-layout-columns [alignment]="'end'" [orientation]="'vertical'" [border]="false" [fit]="true">
+                  <amexio-layout-item [padding]="'0px'">
+                    <i class="fa fa-home " style="font-size: 150px;color: #FFC90A" aria-hidden="true"></i>
+
+                  </amexio-layout-item>
+                  <amexio-layout-item [padding]="'0px'" style="text-align: center">
+                    <span>{{usageReport.summary.thisYear}}</span><br/>
+                    <span><b>THIS YEAR</b></span>
+
+
+                  </amexio-layout-item>
+                </amexio-layout-columns>
+
+              </amexio-layout-item>
+            </amexio-layout-columns>
+
+          </amexio-column>
+
+        </amexio-row>
+      </amexio-body>
+    </amexio-card><br>
+
+    <amexio-card [header]="true"
+                 [footer]="false">
+      <amexio-header>
+        YOUR USAGE BREAKDOWN
+      </amexio-header>
+      <amexio-body>
+        <amexio-row>
+          <amexio-column [size]="6">
+            <table style="width: 100%">
+              <tr>
+                <td>Average cost per day</td>
+                <td><b>{{usageReport.avgCostPerDay}}</b></td>
+              </tr>
+              <tr>
+                <td>Average daily usage</td>
+                <td><b>{{usageReport.avgDailyUsage}}</b></td>
+              </tr>
+              <tr>
+                <td>Same time last year</td>
+                <td><b>{{usageReport.sameTimeLastYear}}</b></td>
+              </tr>
+
+              <tr>
+                <td>  <p><b>Year indicative greenhouse gas emissions</b></p></td>
+              </tr>
+
+              <tr>
+                <td>Total for this bill</td>
+                <td><b>{{usageReport.totalBill}}</b></td>
+              </tr>
+              <tr>
+                <td>Same time last year</td>
+                <td><b>{{usageReport.samelastYear}}</b></td>
+              </tr>
+              <tr *ngIf="tabData.value == 'naturalgas'">
+                <td>Saved with Green Gas</td>
+                <td><b>{{usageReport.savedwithGreenPower}}</b></td>
+              </tr>
+              <tr *ngIf="tabData.value == 'electricity'">
+                <td>Saved with GreenPower</td>
+                <td><b>{{usageReport.savedwithGreenPower}}</b></td>
+              </tr>
+            </table><br>
+            <span>For more information on greenhouse gas emission visit</span><br>
+            <span><b>originenery.com.au</b></span>
+
+          </amexio-column>
+          <amexio-column [size]="6">
+            <amexio-d3-chart-bar
+              [data]="usageReport.breakdown"
+              [height]="300"
+              [label-color]="'white'"
+              [label]="true">
+            </amexio-d3-chart-bar>
+          </amexio-column>
+
+        </amexio-row>
+      </amexio-body>
+    </amexio-card>
+  </ng-container>
+
+</ng-container>
+

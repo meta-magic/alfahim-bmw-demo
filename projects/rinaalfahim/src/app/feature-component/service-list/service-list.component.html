@@ -1,0 +1,42 @@
+<span class="servicelist">
+    <amexio-card [header]="false"
+                          [footer]="true"
+                          [footer-align]="'center'">
+         <amexio-body>
+           <search-box (search)="getSearchObject($event)"></search-box>
+           <ng-container *ngFor="let service of serviceList">
+             <amexio-button [label]="service.serviceName"
+                            [type]="'theme-color'"
+                            (onClick)="openServiceBookingWindow(service)"
+                            [disabled]="service.disabled"
+                            [tooltip]="'large'"
+                            [block]="true">
+             </amexio-button><br>
+           </ng-container>
+         </amexio-body>
+         <amexio-action>
+           <amexio-row>
+             <amexio-column [size]="4">
+               <amexio-image style="color: lightskyblue" [icon-class]="'fa fa-file-pdf-o fa-2x'" ></amexio-image>
+             </amexio-column>
+             <amexio-column [size]="4">
+               <amexio-image style="color: blue" [icon-class]="'fa fa-file-word-o fa-2x'" ></amexio-image>
+             </amexio-column>
+             <amexio-column [size]="4">
+               <amexio-image style="color: green" [icon-class]="'fa fa-file-excel-o fa-2x'" ></amexio-image>
+             </amexio-column>
+           </amexio-row>
+         </amexio-action>
+       </amexio-card>
+</span>
+
+<amexio-notification
+  [data]="errorMsgData"
+  [vertical-position]="'top'"
+  [horizontal-position]="'center'"
+  [close-on-escape] ="true"
+  [background-color]="'red'"
+  [auto-dismiss-msg]="true"
+  [icon]="'fa fa-times-circle-o'"
+  [auto-dismiss-msg-interval]="4000">
+</amexio-notification>
