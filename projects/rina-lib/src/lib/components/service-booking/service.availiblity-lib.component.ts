@@ -100,7 +100,7 @@ export class ServiceAvailiblityComponent implements OnInit {
           if (element) {
             this.serviceStations.push(new GoogleMapOverlays(Number(element.latitude), Number(element.longitude),
               element.locationName + ', UAE', true,
-              'https://testapi.amexio.org/api/v5.5/assets/images/googlemap/bmwmap.png',
+              'assets/images/googlemap/bmwmap.png',
               element));
           }
         });

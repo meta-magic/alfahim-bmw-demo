@@ -59,7 +59,7 @@ export class ServiceConfirmationComponent implements OnInit {
       Number(this.serviceModel.locationModel.longitude),
       this.serviceModel.locationName + ', UAE',
       true,
-      'https://testapi.amexio.org/api/v5.5/assets/images/googlemap/bmwmap.png',
+      'assets/images/googlemap/bmwmap.png',
       { country: 'United Arab Emirates', capital: 'Abu Dhabi' }));
 
     this.createServiceDataStructure();
