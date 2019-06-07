@@ -1,0 +1,24 @@
+{
+    "success": true,
+    "message": "data retrived successfully",
+    "data": [
+      {
+        "latitude": 123,
+        "longitude": 123,
+        "locationId": "1",
+        "locationName": "India 1",
+        "primaryKey" : 123,
+        "primaryDisplay" : "India"
+
+      },
+      {
+        "latitude": 123,
+        "longitude": 123,
+        "locationId": "1",
+        "locationName": "USA",
+        "primaryKey" : 123,
+        "primaryDisplay" : "USA"
+
+      }
+    ]
+  }
