@@ -248,7 +248,7 @@ var ServiceConfirmationComponent = /** @class */ (function () {
             this.loadData();
         }
         this.serviceStations = [];
-        this.serviceStations.push(new amexio_ng_extensions__WEBPACK_IMPORTED_MODULE_3__["GoogleMapOverlays"](Number(this.serviceModel.locationModel.latitude), Number(this.serviceModel.locationModel.longitude), this.serviceModel.locationName + ', UAE', true, 'https://testapi.amexio.org/api/v5.5/assets/images/googlemap/bmwmap.png', { country: 'United Arab Emirates', capital: 'Abu Dhabi' }));
+        this.serviceStations.push(new amexio_ng_extensions__WEBPACK_IMPORTED_MODULE_3__["GoogleMapOverlays"](Number(this.serviceModel.locationModel.latitude), Number(this.serviceModel.locationModel.longitude), this.serviceModel.locationName + ', UAE', true, 'assets/images/googlemap/bmwmap.png', { country: 'United Arab Emirates', capital: 'Abu Dhabi' }));
         this.createServiceDataStructure();
     };
     ServiceConfirmationComponent.prototype.confirmAppointment = function (personalDetails) {
@@ -861,7 +861,7 @@ var ServiceAvailiblityComponent = /** @class */ (function () {
             _this.serviceStations = [];
             _this.serviceLocations.forEach(function (element) {
                 if (element) {
-                    _this.serviceStations.push(new amexio_ng_extensions__WEBPACK_IMPORTED_MODULE_2__["GoogleMapOverlays"](Number(element.latitude), Number(element.longitude), element.locationName + ', UAE', true, 'https://testapi.amexio.org/api/v5.5/assets/images/googlemap/bmwmap.png', element));
+                    _this.serviceStations.push(new amexio_ng_extensions__WEBPACK_IMPORTED_MODULE_2__["GoogleMapOverlays"](Number(element.latitude), Number(element.longitude), element.locationName + ', UAE', true, 'assets/images/googlemap/bmwmap.png', element));
                 }
             });
         });
