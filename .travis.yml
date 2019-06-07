@@ -30,8 +30,9 @@ script:
   - ng build
 after_success: 
   - codecov
+  - mkdir docs
   - rm -rf docs/*
-  - cp -rf /home/travis/build/meta-magic/alfahim-bmw-demo/dist/alfahim-bmw-demo/* docs/
+  - cp -rf /home/travis/build/meta-magic/alfahim-bmw-demo/dist/rina/* docs/
   - git add docs
   - git commit -m "[skip travis]  date"
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master; fi
