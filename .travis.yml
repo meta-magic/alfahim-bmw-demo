@@ -1,0 +1,39 @@
+
+sudo: required
+dist: trusty
+
+#install google chrome, using addons
+addons:
+  apt:
+    sources:
+     - google-chrome
+    packages:
+      - google-chrome-stable
+
+env:
+  global:
+language: node_js
+node_js:
+  - "8"
+before_install:
+  - composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+  
+before_script:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  #- npm install --global gulp --save
+script: 
+  - npm install
+  - npm i https://github.com/meta-magic/d3-charts-tar/blob/master/amexio-chart-d3.tgz?raw=true
+  - npm i https://github.com/meta-magic/amexio-ios/blob/v5.13/amexio-ng-extensions.tgz?raw=true
+  - ng build
+after_success: 
+  - codecov
+  - rm -rf docs/*
+  - cp -rf /home/travis/build/meta-magic/alfahim-bmw-demo/dist/alfahim-bmw-demo/* docs/
+  - git add docs
+  - git commit -m "[skip travis]  date"
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master; fi
+cache:
+  yarn: true
